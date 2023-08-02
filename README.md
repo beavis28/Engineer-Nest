@@ -2,4 +2,4 @@
 
   --> npm install (install all dependencies)
   
-  --> npm run dev start localhost
+  --> npm run dev to start localhost
