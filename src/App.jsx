@@ -1,20 +1,25 @@
-import { Route, Router, Routes } from "react-router-dom";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Navbar from "./Navbar";
 import Aboutus from "./pages/Aboutus";
-
+import Footer from "./Footer";
+import "./App.css";
 function App() {
   return (
-    <div>
+    <div className="app-container">
+    <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/aboutus" element={<Aboutus />} />
-      </Routes>
-    </div>
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/aboutus" element={<Aboutus />} />
+        </Routes>
+      </div>
+    </>
+    <Footer />
+  </div>
   );
 }
 
