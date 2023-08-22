@@ -24,7 +24,7 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/" className="font-semibold text-2xl text-gray-900">
+        <a href="#home" className="text-2xl text-gray-900">
           Home
         </a>
       </Typography>
@@ -34,8 +34,8 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/" className="font-semibold text-2xl text-gray-900">
-          Jobs
+        <a href="#engineer" className="text-2xl text-gray-900 cursor-pointer">
+          Engineers
         </a>
       </Typography>
       <Typography
@@ -44,27 +44,18 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/" className="font-semibold text-2xl text-gray-900">
-          Blogs
+        <a href="#startup" className="text-2xl text-gray-900 cursor-pointer">
+          Start-Up
         </a>
       </Typography>
+
       <Typography
-        as="li"
+        as="a"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/" className="font-semibold text-2xl text-gray-900">
-          About Us
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="/" className="font-semibold text-2xl text-gray-900">
+        <a href="#contactus" className="text-2xl text-gray-900 cursor-pointer">
           Contact Us
         </a>
       </Typography>
@@ -72,7 +63,7 @@ const Navvigationbar = () => {
   );
   return (
     <div>
-      <div className=" flex items-center justify-between text-blue-gray-900 p-12">
+      <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
@@ -83,22 +74,8 @@ const Navvigationbar = () => {
           </a>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
-        <Button
-          variant="gradient"
-          size="sm"
-          className="hidden lg:inline-block items-center rounded-md bg-amber-500 border-0 py-2 px-4 text-white"
-        >
-          <a href="/signup" className="font-semibold text-2xl text-gray-900">
-            SIGN UP
-          </a>
-        </Button>
 
-        <div
-          // variant="text"
-          className=" lg:hidden"
-          // ripple={false}
-          onClick={() => setOpenNav(!openNav)}
-        >
+        <div className=" lg:hidden" onClick={() => setOpenNav(!openNav)}>
           {openNav ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -133,19 +110,7 @@ const Navvigationbar = () => {
         </div>
       </div>
       <MobileNav open={openNav}>
-        <div className="container mx-auto">
-          {navList}
-          <Button
-            variant="gradient"
-            size="sm"
-            fullWidth
-            className="mb-2 items-center rounded-md bg-amber-500 border-0 py-2 px-4 text-white"
-          >
-            <a href="/signup" className="font-semibold text-2xl text-gray-900">
-              SIGN UP
-            </a>
-          </Button>
-        </div>
+        <div className="container mx-auto">{navList}</div>
       </MobileNav>
     </div>
   );

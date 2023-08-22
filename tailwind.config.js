@@ -10,13 +10,13 @@ module.exports = {
         logo: "50px",
       },
       fontFamily: {
-        "libre-bodoni": ["Libre Bodoni Regular", "serif"],
-        "libre-bodoni-italic": ["Libre Bodoni Italic", "serif"],
-        "libre-bodoni-bold": ["Libre Bodoni Bold", "serif"],
+        Montserrat: ["Montserrat Regular", "serif"],
+        "Montserrat-italic": ["Montserrat Italic", "serif"],
+        "Montserrat-bold": ["Montserrat Bold", "serif"],
       },
       colors: {
-        fontcol: '#FDB137',
-        bgcolor: "#D9D9D9"
+        fontcol: "#0055B0",
+        bgcolor: "#D9D9D9",
       },
     },
   },
