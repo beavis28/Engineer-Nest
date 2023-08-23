@@ -10,9 +10,14 @@ module.exports = {
         logo: "50px",
       },
       fontFamily: {
-        Montserrat: ["Montserrat Regular", "serif"],
+        'Montserrat': ["Montserrat", "sans-serif"],
         "Montserrat-italic": ["Montserrat Italic", "serif"],
         "Montserrat-bold": ["Montserrat Bold", "serif"],
+
+        Mont : ['Montserrat', 'sans-serif'],
+        Mont1: ['Poppins', 'sans-serif'],
+        Rob: ['Roboto', 'sans-serif'],
+
       },
       colors: {
         fontcol: "#0055B0",
