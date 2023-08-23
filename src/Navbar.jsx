@@ -24,7 +24,7 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#home" className="text-2xl text-gray-900">
+        <a href="#home" className="font-Mont text-lg">
           Home
         </a>
       </Typography>
@@ -34,7 +34,9 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#engineer" className="text-2xl text-gray-900 cursor-pointer">
+        <a href="#jobseeker" className="font-Mont text-lg cursor-pointer"
+
+        >
           Engineers
         </a>
       </Typography>
@@ -44,7 +46,7 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#startup" className="text-2xl text-gray-900 cursor-pointer">
+        <a href="#startup" className="font-Mont text-lg cursor-pointer">
           Start-Up
         </a>
       </Typography>
@@ -55,8 +57,19 @@ const Navvigationbar = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#contactus" className="text-2xl text-gray-900 cursor-pointer">
-          Contact Us
+        <a href="#engineer" className="font-Mont text-lg cursor-pointer">
+          About Us
+        </a>
+      </Typography>
+
+      <Typography
+        as="a"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <a href="#contactus" className="font-Mont text-lg cursor-pointer">
+          Contact
         </a>
       </Typography>
     </ul>
@@ -70,7 +83,7 @@ const Navvigationbar = () => {
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
           <a className="cursor-pointer" href="">
-            <img src={logo} className="bg-inherit md:w-72 w-44" alt="Logo" />
+            <img src={logo} className="bg-inherit md:w-70 w-44" alt="Logo" />
           </a>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
@@ -94,7 +107,7 @@ const Navvigationbar = () => {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-16 text-fontcol "
+              className="h-12 w-16 text-fontcol mt-5"
               fill="none"
               viewBox="0 0 24 34"
               stroke="currentColor"
