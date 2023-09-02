@@ -514,7 +514,7 @@ const Home = (prob) => {
 
               <h3 className="font-Mont1 font-bold text-white text-xl p-1">Address</h3>
               <p className="font-normal text-gray-100">
-                Kompong Spue, Cambodia
+                Singapore PAYA LEBAR QUARTER, 1 PAYA LEBAR LINK, #04-01, Postal 408533
               </p>
             </div>
             <div className="flex flex-col items-center">
@@ -532,7 +532,7 @@ const Home = (prob) => {
               </svg>
 
               <h3 className="font-Mont1 font-bold text-white text-xl p-1">Phone</h3>
-              <p className="font-normal text-gray-100">+885 965 856</p>
+              <p className="font-normal text-gray-100">+6591933095</p>
             </div>
             <div className="flex flex-col items-center">
               <svg
@@ -550,7 +550,7 @@ const Home = (prob) => {
 
               <h3 className="font-Mont1 font-bold text-white text-xl p-1">Email</h3>
               <p className="font-normal text-gray-100">
-                engineernest@gmail.com
+                engineernested@gmail.com
               </p>
             </div>
           </div>
