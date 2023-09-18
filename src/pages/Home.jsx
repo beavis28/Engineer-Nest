@@ -550,7 +550,7 @@ const Home = (prob) => {
 
               <h3 className="font-Mont1 font-bold text-white text-xl p-1">Email</h3>
               <p className="font-normal text-gray-100">
-                engineernested@gmail.com
+                satoshi@engineernest.com
               </p>
             </div>
           </div>
