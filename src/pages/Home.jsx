@@ -270,12 +270,12 @@ const Home = (prob) => {
                   <div className="md:flex md:space-x-10 w-full mt-10 ">
                     <input
                       type="text"
-                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5  dark:bg-gray-700  "
+                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
                       placeholder="Enter your email"
                     />
                     <input
                       type="text"
-                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5  dark:bg-gray-700  "
+                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
                       placeholder="Enter your Skill"
                     />
                   </div>
@@ -372,12 +372,12 @@ const Home = (prob) => {
                   <div className="md:flex md:space-x-10 w-full mt-10">
                     <input
                       type="text"
-                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5  dark:bg-gray-700  "
+                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5 "
                       placeholder="Enter your email"
                     />
                     <input
                       type="text"
-                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5  dark:bg-gray-700  "
+                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5  "
                       placeholder="Enter your Skill"
                     />
                   </div>
