@@ -12,7 +12,7 @@ const Home = (prob) => {
   const [email, setEmail] = useState("")
   const [skill, setSkill] = useState("")  
 
-  const baseUrl = "http://localhost:8000/api";
+  const baseUrl = "https://engineer-nest-api.up.railway.app/api";
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -640,7 +640,7 @@ const Home = (prob) => {
 
               <h3 className="font-Mont1 font-bold text-white text-xl p-1">Email</h3>
               <p className="font-normal text-gray-100">
-                engineernest@gmail.com
+                engineernest2023@gmail.com
               </p>
             </div>
           </div>
