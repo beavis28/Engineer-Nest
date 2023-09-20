@@ -9,10 +9,16 @@ import { CSSTransition } from 'react-transition-group';
 
 const Home = (prob) => {
   const [hire, setHire] = useState(false)
-  const [email, setEmail] = useState("")
-  const [skill, setSkill] = useState("")  
+  const [seekeremail, setseekerEmail] = useState("")
+  const [seekerskill, setseekerSkill] = useState("")  
+
+  const [hiringemail, sethiringEmail] = useState("")
+  const [hiringskill, sethiringSkill] = useState("")
+
+  const [contactemail, setcontactEmail] = useState("")
 
   const baseUrl = "https://engineer-nest-api.up.railway.app/api";
+  // const baseUrl = "http://localhost:8000/api"
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -39,10 +45,10 @@ const Home = (prob) => {
     };
   }, []);
 
-  const handleSeeking = async (email, skill) => {
+  const handleSeeking = async (seekeremail, seekerskill) => {
     let dataSend = {
-      email: email,
-      skill: skill,
+      email: seekeremail,
+      skill: seekerskill,
     };
 
     console.log(dataSend);
@@ -59,15 +65,17 @@ const Home = (prob) => {
       .then((res) => {
         console.log(res);
         if (res.status > 199 && res.status < 300) {
-          alert(`Send Successfully to ${email} !`);
+          alert(`Successfully sent to Engineernest!`);
         }
+        setseekerEmail("");
+        setseekerSkill("");
       });
   };
 
-  const handleHiring = async (email, skill) => {
+  const handleHiring = async (hiringemail, hiringskill) => {
     let dataSend = {
-      email: email,
-      skill: skill,
+      email: hiringemail,
+      skill: hiringskill,
     };
 
     console.log(dataSend);
@@ -84,14 +92,16 @@ const Home = (prob) => {
       .then((res) => {
         console.log(res);
         if (res.status > 199 && res.status < 300) {
-          alert(`Send Successfully to ${email} !`);
+          alert(`Successfully sent to Engineernest!`);
         }
+        sethiringEmail("");
+        sethiringSkill("");
       });
   };
 
-  const handleContact = async (email) => {
+  const handleContact = async (contactemail) => {
     let dataSend = {
-      email: email,
+      email: contactemail,
     };
 
     console.log(dataSend);
@@ -108,8 +118,9 @@ const Home = (prob) => {
       .then((res) => {
         console.log(res);
         if (res.status > 199 && res.status < 300) {
-          alert(`Send Successfully to ${email} !`);
+          alert(`Successfully sent to Engineernest!`);
         }
+        setcontactEmail("");
       });
   };
 
@@ -349,19 +360,20 @@ const Home = (prob) => {
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
                       placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={hiringemail}
+                      onChange={(e) => sethiringEmail(e.target.value)}
                     />
                     <input
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
                       placeholder="Enter your Skill"
-                      value={skill}
-                      onChange={(e) => setSkill(e.target.value)}
+                      value={hiringskill}
+                      onChange={(e) => sethiringSkill(e.target.value)}
                     />
                   </div>
                   <button
-                    onClick={() => handleHiring(email, skill)}
+                    onClick={() => handleHiring(hiringemail, hiringskill)}
+                    disabled={!hiringemail || !hiringskill ? true : false}
                     // type="submit"
                     className="text-white font-Mont1 right-2.5 bottom-2 bg-fontcol text-lg px-4 py-2 mt-3"
                   >
@@ -456,19 +468,20 @@ const Home = (prob) => {
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5 "
                       placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={seekeremail}
+                      onChange={(e) => setseekerEmail(e.target.value)}
                     />
                     <input
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5  "
                       placeholder="Enter your Skill"
-                      value={skill}
-                      onChange={(e) => setSkill(e.target.value)}
+                      value={seekerskill}
+                      onChange={(e) => setseekerSkill(e.target.value)}
                     />
                   </div>
                   <button
-                    onClick={() => handleSeeking(email, skill)}
+                    onClick={() => handleSeeking(seekeremail, seekerskill)}
+                    disabled={!seekeremail || !seekerskill ? true : false}
                     // type="submit"
                     className="text-white font-Mont1 right-2.5 bottom-2 bg-fontcol text-lg px-4 py-2 mt-3"
                   >
@@ -573,11 +586,12 @@ const Home = (prob) => {
                   type="text"
                   className="mb-6 bg-white border border-black outline-none text-gray-900 text-sm block w-full p-2.5"
                   placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={contactemail}
+                  onChange={(e) => setcontactEmail(e.target.value)}
                 />
                 <button
-                  onClick={() => handleContact(email)}
+                  onClick={() => handleContact(contactemail)}
+                  disabled={!contactemail ? true : false}
                   // type="submit"
                   className="mb-6 bg-white border border-black outline-none text-gray-900 text-sm font-bold block md:w-1/5 w-auto p-1 px-4 text-xs"
                   >
