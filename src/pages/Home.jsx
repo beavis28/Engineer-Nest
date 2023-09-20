@@ -9,8 +9,10 @@ import { CSSTransition } from 'react-transition-group';
 
 const Home = (prob) => {
   const [hire, setHire] = useState(false)
+  const [email, setEmail] = useState("")
+  const [skill, setSkill] = useState("")  
 
-
+  const baseUrl = "http://localhost:8000/api";
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -22,7 +24,7 @@ const Home = (prob) => {
     const handleHashChange = () => {
       if (window.location.hash === '#startup') {
         // Trigger your event here
-       setHire(true)
+        setHire(true)
       }else{
         setHire(false)
       }
@@ -36,6 +38,81 @@ const Home = (prob) => {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
+
+  const handleSeeking = async (email, skill) => {
+    let dataSend = {
+      email: email,
+      skill: skill,
+    };
+
+    console.log(dataSend);
+
+    const res = await fetch(`${baseUrl}/mailSeeker`, {
+      method: "POST",
+      body: JSON.stringify(dataSend),
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      // HANDLING ERRORS
+      .then((res) => {
+        console.log(res);
+        if (res.status > 199 && res.status < 300) {
+          alert(`Send Successfully to ${email} !`);
+        }
+      });
+  };
+
+  const handleHiring = async (email, skill) => {
+    let dataSend = {
+      email: email,
+      skill: skill,
+    };
+
+    console.log(dataSend);
+
+    const res = await fetch(`${baseUrl}/mailHiring`, {
+      method: "POST",
+      body: JSON.stringify(dataSend),
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      // HANDLING ERRORS
+      .then((res) => {
+        console.log(res);
+        if (res.status > 199 && res.status < 300) {
+          alert(`Send Successfully to ${email} !`);
+        }
+      });
+  };
+
+  const handleContact = async (email) => {
+    let dataSend = {
+      email: email,
+    };
+
+    console.log(dataSend);
+
+    const res = await fetch(`${baseUrl}/mailContact`, {
+      method: "POST",
+      body: JSON.stringify(dataSend),
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      // HANDLING ERRORS
+      .then((res) => {
+        console.log(res);
+        if (res.status > 199 && res.status < 300) {
+          alert(`Send Successfully to ${email} !`);
+        }
+      });
+  };
+
   return (
     
     <div>
@@ -272,15 +349,20 @@ const Home = (prob) => {
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
                       placeholder="Enter your Skill"
+                      value={skill}
+                      onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
                   <button
-                    type="submit"
+                    onClick={() => handleHiring(email, skill)}
+                    // type="submit"
                     className="text-white font-Mont1 right-2.5 bottom-2 bg-fontcol text-lg px-4 py-2 mt-3"
                   >
                     Send Now
@@ -374,15 +456,20 @@ const Home = (prob) => {
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5 "
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                       type="text"
                       className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm block w-full p-2.5  "
                       placeholder="Enter your Skill"
+                      value={skill}
+                      onChange={(e) => setSkill(e.target.value)}
                     />
                   </div>
                   <button
-                    type="submit"
+                    onClick={() => handleSeeking(email, skill)}
+                    // type="submit"
                     className="text-white font-Mont1 right-2.5 bottom-2 bg-fontcol text-lg px-4 py-2 mt-3"
                   >
                     Send Now
@@ -486,9 +573,12 @@ const Home = (prob) => {
                   type="text"
                   className="mb-6 bg-white border border-black outline-none text-gray-900 text-sm block w-full p-2.5"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
-                  type="submit"
+                  onClick={() => handleContact(email)}
+                  // type="submit"
                   className="mb-6 bg-white border border-black outline-none text-gray-900 text-sm font-bold block md:w-1/5 w-auto p-1 px-4 text-xs"
                   >
                   Send Now
