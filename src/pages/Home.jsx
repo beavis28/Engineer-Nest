@@ -6,6 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Typewriter from "typewriter-effect";
 import { CSSTransition } from 'react-transition-group';
+import axios from 'axios';
 
 const Home = (prob) => {
   const [hire, setHire] = useState(false)
@@ -17,7 +18,7 @@ const Home = (prob) => {
 
   const [contactemail, setcontactEmail] = useState("")
 
-  const baseUrl = "https://engineer-nest-api.up.railway.app/api";
+  // const baseUrl = "https://engineer-nest-api.up.railway.app/api";
   // const baseUrl = "http://localhost:8000/api"
   useEffect(() => {
     AOS.init({
@@ -45,84 +46,79 @@ const Home = (prob) => {
     };
   }, []);
 
+  
+
   const handleSeeking = async (seekeremail, seekerskill) => {
-    let dataSend = {
-      email: seekeremail,
-      skill: seekerskill,
-    };
+    // Define the cloud function URL. This might change depending on your Firebase setup
+    const functionURL = 'http://127.0.0.1:5001/engineernest-ee1f6/us-central1/sendEmailSeeking';
 
-    console.log(dataSend);
-
-    const res = await fetch(`${baseUrl}/mailSeeker`, {
-      method: "POST",
-      body: JSON.stringify(dataSend),
-      headers: {
-        // Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      // HANDLING ERRORS
-      .then((res) => {
-        console.log(res);
-        if (res.status > 199 && res.status < 300) {
-          alert(`Successfully sent to Engineernest!`);
-        }
-        setseekerEmail("");
-        setseekerSkill("");
+    try {
+      // Send a POST request to your cloud function
+      const response = await axios.post(functionURL, {
+        email: seekeremail,
+        skill: seekerskill
       });
+
+      // Handle the response or error from your cloud function here
+      if (response.data.status === 200) {
+        alert('Email sent successfully!');
+      } else {
+        alert('Email sent successfully!');
+      }
+    } catch (error) {
+      console.error('There was an error sending the email', error);
+    }
+    setseekerEmail("");
+    setseekerSkill("");
   };
 
   const handleHiring = async (hiringemail, hiringskill) => {
-    let dataSend = {
-      email: hiringemail,
-      skill: hiringskill,
-    };
+    // Define the cloud function URL. This might change depending on your Firebase setup
+    const functionURL = 'http://127.0.0.1:5001/engineernest-ee1f6/us-central1/sendEmailHiring';
 
-    console.log(dataSend);
-
-    const res = await fetch(`${baseUrl}/mailHiring`, {
-      method: "POST",
-      body: JSON.stringify(dataSend),
-      headers: {
-        // Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      // HANDLING ERRORS
-      .then((res) => {
-        console.log(res);
-        if (res.status > 199 && res.status < 300) {
-          alert(`Successfully sent to Engineernest!`);
-        }
-        sethiringEmail("");
-        sethiringSkill("");
+    try {
+      // Send a POST request to your cloud function
+      const response = await axios.post(functionURL, {
+        email: hiringemail,
+        skill: hiringskill
       });
+
+      // Handle the response or error from your cloud function here
+      if (response.data.status === 200) {
+        alert('Email sent successfully!');
+      } else {
+        alert('Email sent successfully!');
+      }
+    } catch (error) {
+      console.error('There was an error sending the email', error);
+    }
+    sethiringEmail("");
+    sethiringSkill("");
   };
 
-  const handleContact = async (contactemail) => {
-    let dataSend = {
-      email: contactemail,
-    };
+  const handleContact = async (contactemail, contactskill) => {
+    // Define the cloud function URL. This might change depending on your Firebase setup
+    const functionURL = 'http://127.0.0.1:5001/engineernest-ee1f6/us-central1/sendEmailContact';
 
-    console.log(dataSend);
-
-    const res = await fetch(`${baseUrl}/mailContact`, {
-      method: "POST",
-      body: JSON.stringify(dataSend),
-      headers: {
-        // Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      // HANDLING ERRORS
-      .then((res) => {
-        console.log(res);
-        if (res.status > 199 && res.status < 300) {
-          alert(`Successfully sent to Engineernest!`);
-        }
-        setcontactEmail("");
+    try {
+      // Send a POST request to your cloud function
+      const response = await axios.post(functionURL, {
+        email: contactemail,
+        skill: contactskill
       });
+
+      // Handle the response or error from your cloud function here
+      if (response.data.status === 200) {
+        alert('Email sent successfully!');
+      } else {
+        alert('Email sent successfully!');
+      }
+    } catch (error) {
+      console.error('There was an error sending the email', error);
+    }
+    setcontactEmail("");
   };
+
 
   return (
     
@@ -379,6 +375,27 @@ const Home = (prob) => {
                   >
                     Send Now
                   </button>
+                  {/* <div className="md:flex md:space-x-10 w-full mt-10 ">
+                    <input
+                      type="text"
+                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
+                      placeholder="Enter your email"
+                      
+                    />
+                    <input
+                      type="text"
+                      className="mb-6  outline outline-blue-600  bg-transparent text-gray-900 text-sm  block w-full p-2.5"
+                      placeholder="Enter your Skill"
+                      
+                    />
+                  </div>
+                  <button
+                    
+                    // type="submit"
+                    className="text-white font-Mont1 right-2.5 bottom-2 bg-fontcol text-lg px-4 py-2 mt-3"
+                  >
+                    Send Now
+                  </button> */}
                 </div>
                 {/* <div className="">
                   <img src="../img/hirring.png" />
@@ -598,6 +615,21 @@ const Home = (prob) => {
                   Send Now
                 </button>
               </div>
+              {/* <div className="md:flex justify-between w-full mt-3">
+                <input
+                  type="text"
+                  className="mb-6 bg-white border border-black outline-none text-gray-900 text-sm block w-full p-2.5"
+                  placeholder="Enter your email"
+                  
+                />
+                <button
+                  
+                  // type="submit"
+                  className="mb-6 bg-white border border-black outline-none text-gray-900 text-sm font-bold block md:w-1/5 w-auto p-1 px-4 text-xs"
+                  >
+                  Send Now
+                </button>
+              </div> */}
               
             </div>
           </div>
