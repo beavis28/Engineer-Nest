@@ -43,18 +43,16 @@ exports.sendEmailSeeking = functions.https.onRequest((req, res) => {
     // get contact form data from the req and then assigned it to variables
     const email = req.body.email;
     const skill = req.body.skill;
-    // const name = req.body.data.name;
-    // const message = req.body.data.message;
+
 
     // config the email message
     const mailOptions = {
       from: sender,      
       // to: `${email}`,
-      // to: `${`engineernest2023@gmail.com`}`,
       to: `${receiver}`,
+
       subject: "Job Seeking's Application",
-      // text: `Who: ${name} says: ${message}`,
-      // text: `Who: ${email} says: ${skill}`,
+
       html: `
         <div style="font-family: "Open Sans", sans-serif; background-color: #e7f0ea; padding: 20px">
           <h1 style="font-size: 1.5rem; font-weight: 600" >
@@ -118,18 +116,14 @@ exports.sendEmailHiring = functions.https.onRequest((req, res) => {
     // get contact form data from the req and then assigned it to variables
     const email = req.body.email;
     const skill = req.body.skill;
-    // const name = req.body.data.name;
-    // const message = req.body.data.message;
 
     // config the email message
     const mailOptions = {
       from: sender,
-      
       // to: `${email}`,
-      // to: `${`engineernest2023@gmail.com`}`,
       to: `${receiver}`,
       subject: "Job Hiring's Application",
-      // text: `Who: ${name} says: ${message}`,
+
       html: `
         <div style="font-family: "Open Sans", sans-serif; background-color: #e7f0ea; padding: 20px">
           <h1 style="font-size: 1.5rem; font-weight: 600" >
@@ -191,15 +185,11 @@ exports.sendEmailContact = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
     // get contact form data from the req and then assigned it to variables
     const email = req.body.email;
-    // const name = req.body.data.name;
-    // const message = req.body.data.message;
 
     // config the email message
     const mailOptions = {
       from: sender,
-      
       // to: `${email}`,
-      // to: `${`engineernest2023@gmail.com`}`,
       to: `${receiver}`,
       subject: "Inquiry via Contact Us",
       // text: `Who: ${name} says: ${message}`,
