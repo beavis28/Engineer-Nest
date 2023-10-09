@@ -4,6 +4,7 @@
 const functions = require("firebase-functions");
 const nodemailer = require("nodemailer");
 
+
 // when this cloud function is already deployed, change the origin to 'https://your-deployed-app-url
 const cors = require("cors")({origin: true});
 
@@ -36,9 +37,9 @@ exports.sendEmailSeeking = functions.https.onRequest((req, res) => {
 
     // config the email message
     const mailOptions = {
-      from: "Engineernest",
-      
+      from: "engineernest2023@gmail.com",      
       // to: `${email}`,
+      // to: `${`engineernest2023@gmail.com`}`,
       to: `engineernest2023@gmail.com`,
       subject: "Job Seeking's Application",
       // text: `Who: ${name} says: ${message}`,
@@ -114,6 +115,7 @@ exports.sendEmailHiring = functions.https.onRequest((req, res) => {
       from: "engineernest2023@gmail.com",
       
       // to: `${email}`,
+      // to: `${`engineernest2023@gmail.com`}`,
       to: `engineernest2023@gmail.com`,
       subject: "Job Hiring's Application",
       // text: `Who: ${name} says: ${message}`,
@@ -186,6 +188,7 @@ exports.sendEmailContact = functions.https.onRequest((req, res) => {
       from: "engineernest2023@gmail.com",
       
       // to: `${email}`,
+      // to: `${`engineernest2023@gmail.com`}`,
       to: `engineernest2023@gmail.com`,
       subject: "Inquiry via Contact Us",
       // text: `Who: ${name} says: ${message}`,

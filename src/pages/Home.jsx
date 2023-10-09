@@ -20,6 +20,7 @@ const Home = (prob) => {
 
   // const baseUrl = "https://engineer-nest-api.up.railway.app/api";
   // const baseUrl = "http://localhost:8000/api"
+  // const baseUrl = "https://engineernest.com/"
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -50,8 +51,8 @@ const Home = (prob) => {
 
   const handleSeeking = async (seekeremail, seekerskill) => {
     // Define the cloud function URL. This might change depending on your Firebase setup
-    const functionURL = 'http://127.0.0.1:5001/engineernest-ee1f6/us-central1/sendEmailSeeking';
-
+    // const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailSeeking';
+    const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailSeeking';
     try {
       // Send a POST request to your cloud function
       const response = await axios.post(functionURL, {
@@ -60,10 +61,11 @@ const Home = (prob) => {
       });
 
       // Handle the response or error from your cloud function here
-      if (response.data.status === 200) {
+
+      if (response.data.data.status === 200) {
         alert('Email sent successfully!');
       } else {
-        alert('Email sent successfully!');
+        alert('Fail to send the email!');
       }
     } catch (error) {
       console.error('There was an error sending the email', error);
@@ -74,7 +76,8 @@ const Home = (prob) => {
 
   const handleHiring = async (hiringemail, hiringskill) => {
     // Define the cloud function URL. This might change depending on your Firebase setup
-    const functionURL = 'http://127.0.0.1:5001/engineernest-ee1f6/us-central1/sendEmailHiring';
+    // const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailHiring';
+    const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailHiring';
 
     try {
       // Send a POST request to your cloud function
@@ -84,10 +87,10 @@ const Home = (prob) => {
       });
 
       // Handle the response or error from your cloud function here
-      if (response.data.status === 200) {
+      if (response.data.data.status === 200) {
         alert('Email sent successfully!');
       } else {
-        alert('Email sent successfully!');
+        alert('Fail to send the email!');
       }
     } catch (error) {
       console.error('There was an error sending the email', error);
@@ -98,7 +101,8 @@ const Home = (prob) => {
 
   const handleContact = async (contactemail, contactskill) => {
     // Define the cloud function URL. This might change depending on your Firebase setup
-    const functionURL = 'http://127.0.0.1:5001/engineernest-ee1f6/us-central1/sendEmailContact';
+    // const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailContact';
+    const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailContact';
 
     try {
       // Send a POST request to your cloud function
@@ -108,10 +112,10 @@ const Home = (prob) => {
       });
 
       // Handle the response or error from your cloud function here
-      if (response.data.status === 200) {
+      if (response.data.data.status === 200) {
         alert('Email sent successfully!');
       } else {
-        alert('Email sent successfully!');
+        alert('Fail to send the email!');
       }
     } catch (error) {
       console.error('There was an error sending the email', error);

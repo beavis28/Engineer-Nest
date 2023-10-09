@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "engineernest-b013f"
-  }
+    "default": "engineernest-6bb53",
+    "production": "engineernest-6bb53"
+  },
+  "targets": {},
+  "etags": {}
 }
