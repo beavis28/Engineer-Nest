@@ -51,8 +51,8 @@ const Home = (prob) => {
 
   const handleSeeking = async (seekeremail, seekerskill) => {
     // Define the cloud function URL. This might change depending on your Firebase setup
-    // const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailSeeking';
-    const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailSeeking';
+    const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailSeeking';
+    // const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailSeeking';
     try {
       // Send a POST request to your cloud function
       const response = await axios.post(functionURL, {
@@ -76,8 +76,8 @@ const Home = (prob) => {
 
   const handleHiring = async (hiringemail, hiringskill) => {
     // Define the cloud function URL. This might change depending on your Firebase setup
-    // const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailHiring';
-    const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailHiring';
+    const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailHiring';
+    // const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailHiring';
 
     try {
       // Send a POST request to your cloud function
@@ -101,8 +101,8 @@ const Home = (prob) => {
 
   const handleContact = async (contactemail, contactskill) => {
     // Define the cloud function URL. This might change depending on your Firebase setup
-    // const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailContact';
-    const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailContact';
+    const functionURL = 'http://127.0.0.1:5001/engineernest-6bb53/us-central1/sendEmailContact';
+    // const functionURL = 'https://us-central1-engineernest-6bb53.cloudfunctions.net/sendEmailContact';
 
     try {
       // Send a POST request to your cloud function

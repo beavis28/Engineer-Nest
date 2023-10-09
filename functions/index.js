@@ -3,6 +3,17 @@
 // import needed modules
 const functions = require("firebase-functions");
 const nodemailer = require("nodemailer");
+require('dotenv').config();
+
+
+//Local and Deploy env
+const sender = process.env.SMTP_SENDER || functions.config().smtp.sender;
+const receiver = process.env.SMTP_RECEIVER || functions.config().smtp.receiver;
+const host = process.env.SMTP_HOST || functions.config().smtp.host;
+const pass = process.env.SMTP_PASS || functions.config().smtp.pass;
+const port = process.env.SMTP_PORT || functions.config().smtp.port;
+
+
 
 
 // when this cloud function is already deployed, change the origin to 'https://your-deployed-app-url
@@ -10,12 +21,12 @@ const cors = require("cors")({origin: true});
 
 // create and config transporter
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
+  host: host,
+  port: port,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: "engineernest2023@gmail.com",
-    pass: "vrck qgvc ttai xotp",
+    user: sender,
+    pass: pass,
   },
 });
 
@@ -37,10 +48,10 @@ exports.sendEmailSeeking = functions.https.onRequest((req, res) => {
 
     // config the email message
     const mailOptions = {
-      from: "engineernest2023@gmail.com",      
+      from: sender,      
       // to: `${email}`,
       // to: `${`engineernest2023@gmail.com`}`,
-      to: `engineernest2023@gmail.com`,
+      to: `${receiver}`,
       subject: "Job Seeking's Application",
       // text: `Who: ${name} says: ${message}`,
       // text: `Who: ${email} says: ${skill}`,
@@ -112,11 +123,11 @@ exports.sendEmailHiring = functions.https.onRequest((req, res) => {
 
     // config the email message
     const mailOptions = {
-      from: "engineernest2023@gmail.com",
+      from: sender,
       
       // to: `${email}`,
       // to: `${`engineernest2023@gmail.com`}`,
-      to: `engineernest2023@gmail.com`,
+      to: `${receiver}`,
       subject: "Job Hiring's Application",
       // text: `Who: ${name} says: ${message}`,
       html: `
@@ -185,11 +196,11 @@ exports.sendEmailContact = functions.https.onRequest((req, res) => {
 
     // config the email message
     const mailOptions = {
-      from: "engineernest2023@gmail.com",
+      from: sender,
       
       // to: `${email}`,
       // to: `${`engineernest2023@gmail.com`}`,
-      to: `engineernest2023@gmail.com`,
+      to: `${receiver}`,
       subject: "Inquiry via Contact Us",
       // text: `Who: ${name} says: ${message}`,
       html: `
