@@ -24,7 +24,10 @@ Make sure not to commit your .env file to version control. Add .env to your .git
   - firebase functions:config:set newconfig.key="newvalue" && firebase functions:config:unset database.url (Combining Set and Unset)
   - firebase functions:config:get (Viewing Current Environment Configurations)
 # Hosting
+
 + npm run build
++ firebase logout
++ firebase login
 + firebase deploy --only hosting
 # Deploy
 + firebase deploy --only functions
