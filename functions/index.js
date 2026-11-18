@@ -6,12 +6,14 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 
-//Local and Deploy env
-const sender = process.env.SMTP_SENDER || functions.config().smtp.sender;
-const receiver = process.env.SMTP_RECEIVER || functions.config().smtp.receiver;
-const host = process.env.SMTP_HOST || functions.config().smtp.host;
-const pass = process.env.SMTP_PASS || functions.config().smtp.pass;
-const port = process.env.SMTP_PORT || functions.config().smtp.port;
+// SMTP settings come from functions/.env (see .env.example);
+// the password is the Secret Manager secret SMTP_PASS, exposed to the functions below.
+const sender = process.env.SMTP_SENDER;
+const receiver = process.env.SMTP_RECEIVER;
+const host = process.env.SMTP_HOST;
+const pass = process.env.SMTP_PASS;
+const port = process.env.SMTP_PORT;
+const withSmtp = functions.runWith({secrets: ["SMTP_PASS"]});
 // inquiries from the website contact form go straight to the CEO
 const contactReceiver = "satoshi@engineernest.com";
 
@@ -33,7 +35,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // export the cloud function called `sendEmailSeeking`
-exports.sendEmailSeeking = functions.https.onRequest((req, res) => {
+exports.sendEmailSeeking = withSmtp.https.onRequest((req, res) => {
   // for testing purposes
   console.log(
       "from sendEmail function. The request object is:",
@@ -106,7 +108,7 @@ exports.sendEmailSeeking = functions.https.onRequest((req, res) => {
 });
 
 // export the cloud function called `sendEmailHiring`
-exports.sendEmailHiring = functions.https.onRequest((req, res) => {
+exports.sendEmailHiring = withSmtp.https.onRequest((req, res) => {
   // for testing purposes
   console.log(
       "from sendEmail function. The request object is:",
@@ -180,7 +182,7 @@ const escapeHtml = (v) => String(v || "")
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-exports.sendEmailContact = functions.https.onRequest((req, res) => {
+exports.sendEmailContact = withSmtp.https.onRequest((req, res) => {
   // for testing purposes
   console.log(
       "from sendEmail function. The request object is:",
