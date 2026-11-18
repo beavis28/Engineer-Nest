@@ -10,9 +10,11 @@ export const NAV_LINKS = [
 
 export const Logo = () => (
   <a href="/#top" className="group flex items-center gap-2.5" aria-label="ENGINEERNEST home">
-    <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-nest-500 to-cyan-400 font-display text-sm font-bold text-ink shadow-[0_0_24px_rgba(47,107,255,0.55)] transition-transform group-hover:rotate-12">
-      EN
-    </span>
+    <img
+      src="/brand/engineernest-icon.svg"
+      alt=""
+      className="h-10 w-10 drop-shadow-[0_0_12px_rgba(47,107,255,0.6)] transition-transform duration-500 group-hover:rotate-45"
+    />
     <span className="font-display text-lg font-bold tracking-[0.18em]">
       ENGINEER<span className="text-nest-400">NEST</span>
     </span>

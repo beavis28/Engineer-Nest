@@ -40,7 +40,7 @@ const Footer = () => {
               {t.footer.terms}
             </a>
           </div>
-          <p className="font-mono">Japan ⇄ Cambodia</p>
+          <p className="font-mono">Japan × Singapore × Cambodia</p>
         </div>
       </div>
     </footer>

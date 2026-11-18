@@ -69,16 +69,16 @@ const ja = {
   meta: {
     title: "ENGINEERNEST — AR/VR・AI・モバイル・IoT 開発",
     description:
-      "ENGINEERNESTはカンボジアのエンジニアチームとともに、AR/VR、モバイルアプリ、AI活用、医療系Webサイト、IoTデバイスのPoC研究開発を手がける開発スタジオです。",
+      "ENGINEERNESTは日本・シンガポール・カンボジアをつなぎ、カンボジアのエンジニアチームとともに、AR/VR、モバイルアプリ、AI活用、医療系Webサイト、IoTデバイスのPoC研究開発を手がける開発スタジオです。",
   },
   nav: { contact: "Contact", cta: "Let's talk →", openMenu: "メニューを開く" },
   footer: {
-    tagline: "日本 × カンボジアのエンジニアチームで、AR/VR・AI・モバイル・IoT のアイデアをプロダクトに。",
+    tagline: "日本 × シンガポール × カンボジアのチームで、AR/VR・AI・モバイル・IoT のアイデアをプロダクトに。",
     privacy: "プライバシーポリシー",
     terms: "利用規約",
   },
   hero: {
-    badge: "Dev studio — Japan × Cambodia",
+    badge: ["Dev studio", "Japan × Singapore × Cambodia"],
     lead: (
       <>
         AR/VR、AI、モバイル、IoT。
@@ -206,16 +206,16 @@ const en = {
   meta: {
     title: "ENGINEERNEST — AR/VR, AI, Mobile & IoT Development",
     description:
-      "ENGINEERNEST is a development studio working with an engineering team in Cambodia on AR/VR, mobile apps, AI solutions, medical websites and IoT proof-of-concept R&D.",
+      "ENGINEERNEST is a development studio connecting Japan, Singapore and Cambodia, working with an engineering team in Cambodia on AR/VR, mobile apps, AI solutions, medical websites and IoT proof-of-concept R&D.",
   },
   nav: { contact: "Contact", cta: "Let's talk →", openMenu: "Open menu" },
   footer: {
-    tagline: "A Japan × Cambodia engineering team turning AR/VR, AI, mobile and IoT ideas into real products.",
+    tagline: "A Japan × Singapore × Cambodia team turning AR/VR, AI, mobile and IoT ideas into real products.",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
   },
   hero: {
-    badge: "Dev studio — Japan × Cambodia",
+    badge: ["Dev studio", "Japan × Singapore × Cambodia"],
     lead: (
       <>
         AR/VR, AI, mobile and IoT.

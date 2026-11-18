@@ -161,7 +161,8 @@ const Hero = () => {
         <div className="reveal">
           <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-4 py-2 font-mono text-xs tracking-wider text-white/70">
             <span className="pulse-dot h-2 w-2 rounded-full bg-cyan-400" />
-            {t.hero.badge}
+            <span className="hidden sm:inline">{t.hero.badge[0]} — </span>
+            {t.hero.badge[1]}
           </p>
           <h1 className="font-display text-[clamp(3rem,9vw,7.25rem)] font-bold leading-[0.92] tracking-tight">
             Build the
