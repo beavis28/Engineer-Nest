@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LangSwitch, useLang } from "./i18n";
 
 export const NAV_LINKS = [
   { href: "/#services", label: "Services" },
@@ -19,6 +20,7 @@ export const Logo = () => (
 );
 
 const Navbar = () => {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -51,33 +53,39 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <a
-          href="/#contact"
-          className="hidden rounded-full bg-white px-5 py-2.5 font-display text-sm font-semibold text-ink transition hover:bg-nest-400 hover:text-white md:inline-block"
-        >
-          Let's talk →
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <LangSwitch />
+          <a
+            href="/#contact"
+            className="hidden rounded-full bg-white px-5 py-2.5 font-display text-sm font-semibold text-ink transition hover:bg-nest-400 hover:text-white md:inline-block"
+          >
+            {t.nav.cta}
+          </a>
+        </div>
 
-        <button
-          type="button"
-          className="relative h-10 w-10 md:hidden"
-          aria-label="メニューを開く"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span
-            className={`absolute left-2 right-2 h-0.5 bg-white transition-all ${open ? "top-5 rotate-45" : "top-3.5"}`}
-          />
-          <span
-            className={`absolute left-2 right-2 h-0.5 bg-white transition-all ${open ? "top-5 -rotate-45" : "top-6"}`}
-          />
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LangSwitch />
+          <button
+            type="button"
+            className="relative h-10 w-10"
+            aria-label={t.nav.openMenu}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span
+              className={`absolute left-2 right-2 h-0.5 bg-white transition-all ${open ? "top-5 rotate-45" : "top-3.5"}`}
+            />
+            <span
+              className={`absolute left-2 right-2 h-0.5 bg-white transition-all ${open ? "top-5 -rotate-45" : "top-6"}`}
+            />
+          </button>
+        </div>
       </nav>
 
       {open && (
         <div className="border-t border-line px-5 pb-8 pt-4 md:hidden">
           <ul className="flex flex-col gap-1">
-            {[...NAV_LINKS, { href: "/#contact", label: "Contact" }].map((l) => (
+            {[...NAV_LINKS, { href: "/#contact", label: t.nav.contact }].map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
