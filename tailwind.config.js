@@ -1,27 +1,24 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
-      // You can add custom sizes to the width and height as needed.
-      width: {
-        logo: "50px",
-      },
-      height: {
-        logo: "50px",
-      },
       fontFamily: {
-        'Montserrat': ["Montserrat", "sans-serif"],
-        "Montserrat-italic": ["Montserrat Italic", "serif"],
-        "Montserrat-bold": ["Montserrat Bold", "serif"],
-
-        Mont : ['Montserrat', 'sans-serif'],
-        Mont1: ['Poppins', 'sans-serif'],
-        Rob: ['Roboto', 'sans-serif'],
-
+        display: ["'Space Grotesk'", "'Noto Sans JP'", "sans-serif"],
+        sans: ["'Noto Sans JP'", "'Space Grotesk'", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       colors: {
-        fontcol: "#0055B0",
-        bgcolor: "#D9D9D9",
+        ink: "#05070d",
+        panel: "#0b0f1a",
+        line: "rgba(255,255,255,0.08)",
+        nest: {
+          50: "#eaf1ff",
+          300: "#7fb0ff",
+          400: "#4d8bff",
+          500: "#2f6bff",
+          600: "#1f4fe0",
+        },
+        cyan: { 400: "#5ad1ff" },
       },
     },
   },

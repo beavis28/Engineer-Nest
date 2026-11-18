@@ -1,132 +1,98 @@
-import React, { useState, useEffect } from "react";
-import logo from "../public/img/logo.png";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import React, { useEffect, useState } from "react";
 
-const Navvigationbar = () => {
-  const [openNav, setOpenNav] = useState(false);
+export const NAV_LINKS = [
+  { href: "/#services", label: "Services" },
+  { href: "/#team", label: "Team" },
+  { href: "/#process", label: "Process" },
+  { href: "/#works", label: "Works" },
+];
+
+export const Logo = () => (
+  <a href="/#top" className="group flex items-center gap-2.5" aria-label="ENGINEERNEST home">
+    <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-nest-500 to-cyan-400 font-display text-sm font-bold text-ink shadow-[0_0_24px_rgba(47,107,255,0.55)] transition-transform group-hover:rotate-12">
+      EN
+    </span>
+    <span className="font-display text-lg font-bold tracking-[0.18em]">
+      ENGINEER<span className="text-nest-400">NEST</span>
+    </span>
+  </a>
+);
+
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#home" className="font-Mont text-lg">
-          Home
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#jobseeker" className="font-Mont text-lg cursor-pointer"
 
-        >
-          Engineers
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#startup" className="font-Mont text-lg cursor-pointer">
-          Start-Up
-        </a>
-      </Typography>
-
-      <Typography
-        as="a"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#engineer" className="font-Mont text-lg cursor-pointer">
-          About Us
-        </a>
-      </Typography>
-
-      <Typography
-        as="a"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#contactus" className="font-Mont text-lg cursor-pointer">
-          Contact
-        </a>
-      </Typography>
-    </ul>
-  );
   return (
-    <div>
-      <div className="flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="#"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
-        >
-          <a className="cursor-pointer" href="">
-            <img src={logo} className="bg-inherit md:w-70 w-44" alt="Logo" />
-          </a>
-        </Typography>
-        <div className="hidden lg:block">{navList}</div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || open ? "border-b border-line bg-ink/75 backdrop-blur-xl" : "border-b border-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
+        <Logo />
 
-        <div className=" lg:hidden" onClick={() => setOpenNav(!openNav)}>
-          {openNav ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              className="h-12 w-12 text-fontcol"
-              viewBox="0 0 24 34"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-16 text-fontcol mt-5"
-              fill="none"
-              viewBox="0 0 24 34"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
+        <ul className="hidden items-center gap-8 md:flex">
+          {NAV_LINKS.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="font-display text-sm tracking-wide text-white/60 transition-colors hover:text-white"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="/#contact"
+          className="hidden rounded-full bg-white px-5 py-2.5 font-display text-sm font-semibold text-ink transition hover:bg-nest-400 hover:text-white md:inline-block"
+        >
+          Let's talk →
+        </a>
+
+        <button
+          type="button"
+          className="relative h-10 w-10 md:hidden"
+          aria-label="メニューを開く"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span
+            className={`absolute left-2 right-2 h-0.5 bg-white transition-all ${open ? "top-5 rotate-45" : "top-3.5"}`}
+          />
+          <span
+            className={`absolute left-2 right-2 h-0.5 bg-white transition-all ${open ? "top-5 -rotate-45" : "top-6"}`}
+          />
+        </button>
+      </nav>
+
+      {open && (
+        <div className="border-t border-line px-5 pb-8 pt-4 md:hidden">
+          <ul className="flex flex-col gap-1">
+            {[...NAV_LINKS, { href: "/#contact", label: "Contact" }].map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 font-display text-3xl font-semibold text-white/80 hover:text-white"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <MobileNav open={openNav}>
-        <div className="container mx-auto">{navList}</div>
-      </MobileNav>
-    </div>
+      )}
+    </header>
   );
 };
 
-export default Navvigationbar;
+export default Navbar;

@@ -12,6 +12,8 @@ const receiver = process.env.SMTP_RECEIVER || functions.config().smtp.receiver;
 const host = process.env.SMTP_HOST || functions.config().smtp.host;
 const pass = process.env.SMTP_PASS || functions.config().smtp.pass;
 const port = process.env.SMTP_PORT || functions.config().smtp.port;
+// inquiries from the website contact form go straight to the CEO
+const contactReceiver = "satoshi@engineernest.com";
 
 
 
@@ -174,6 +176,10 @@ exports.sendEmailHiring = functions.https.onRequest((req, res) => {
 });
 
 // export the cloud function called `sendEmailContact`
+const escapeHtml = (v) => String(v || "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
 exports.sendEmailContact = functions.https.onRequest((req, res) => {
   // for testing purposes
   console.log(
@@ -190,8 +196,9 @@ exports.sendEmailContact = functions.https.onRequest((req, res) => {
     const mailOptions = {
       from: sender,
       // to: `${email}`,
-      to: `${receiver}`,
-      subject: "Inquiry via Contact Us",
+      to: contactReceiver,
+      replyTo: email,
+      subject: `[ENGINEERNEST] お問い合わせ: ${req.body.name || email}`,
       // text: `Who: ${name} says: ${message}`,
       html: `
         <div style="font-family: "Open Sans", sans-serif; background-color: #e7f0ea; padding: 20px">
@@ -205,11 +212,15 @@ exports.sendEmailContact = functions.https.onRequest((req, res) => {
         <ul>
 
           <li>
-            <p>User's email: <span style="font-weight: 700; color: #0e6431">${email}</span></p>
+            <p>User's email: <span style="font-weight: 700; color: #0e6431">${escapeHtml(email)}</span></p>
           </li>
+          <li><p>Name: <b>${escapeHtml(req.body.name)}</b></p></li>
+          <li><p>Company: <b>${escapeHtml(req.body.company)}</b></p></li>
+          <li><p>Interests: <b>${escapeHtml(req.body.interests || req.body.skill)}</b></p></li>
+          <li><p>Message:</p><p style="white-space: pre-wrap">${escapeHtml(req.body.message)}</p></li>
 
         </ul>
-          <p style="font-size: 0.975rem; color: #052311">We recommend following up to provide them with relevant job opportunities.</p>
+          <p style="font-size: 0.975rem; color: #052311">Reply to this email to respond directly to the sender.</p>
           <div style="margin-top: 20px;">
             <p style="font-size: 0.975rem; color: #052311">Best regards</p>
             <p style="font-size: 0.975rem; color: #052311" style="padding-bottom: 10px">Your Automated System</p>
