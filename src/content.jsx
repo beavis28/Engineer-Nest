@@ -74,6 +74,8 @@ const ja = {
   nav: { contact: "Contact", cta: "Let's talk →", openMenu: "メニューを開く" },
   footer: {
     tagline: "日本 × カンボジアのエンジニアチームで、AR/VR・AI・モバイル・IoT のアイデアをプロダクトに。",
+    privacy: "プライバシーポリシー",
+    terms: "利用規約",
   },
   hero: {
     badge: "Dev studio — Japan × Cambodia",
@@ -209,6 +211,8 @@ const en = {
   nav: { contact: "Contact", cta: "Let's talk →", openMenu: "Open menu" },
   footer: {
     tagline: "A Japan × Cambodia engineering team turning AR/VR, AI, mobile and IoT ideas into real products.",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
   },
   hero: {
     badge: "Dev studio — Japan × Cambodia",

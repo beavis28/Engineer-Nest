@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Legal from "./pages/Legal";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./App.css";
@@ -37,6 +38,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<Legal doc="privacy" />} />
+          <Route path="/terms" element={<Legal doc="terms" />} />
           {PRIVACY_POLICY_APPS.map((app) => (
             <Route
               key={app}

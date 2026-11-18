@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useLayoutEffect, useState } from "react";
 import content from "./content";
 
 export const LANGS = ["ja", "en"];
@@ -35,7 +35,8 @@ export const LangProvider = ({ children }) => {
     } catch {}
   };
 
-  useEffect(() => {
+  // layout effect so a page's own title (set in a regular effect, e.g. Legal) wins
+  useLayoutEffect(() => {
     const t = content[lang];
     document.documentElement.lang = lang;
     document.title = t.meta.title;

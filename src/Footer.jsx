@@ -25,13 +25,21 @@ const Footer = () => {
 
         <p
           aria-hidden="true"
-          className="outline-text pointer-events-none mt-16 select-none text-center font-display text-[15vw] font-bold leading-none tracking-tight md:text-[11rem]"
+          className="outline-text pointer-events-none mt-16 select-none text-center font-display text-[clamp(2.5rem,12.5vw,11rem)] font-bold leading-none tracking-tight"
         >
           ENGINEERNEST
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-white/40 md:flex-row">
           <p>© {new Date().getFullYear()} ENGINEERNEST. All rights reserved.</p>
+          <div className="flex gap-5">
+            <a href="/privacy" className="hover:text-white">
+              {t.footer.privacy}
+            </a>
+            <a href="/terms" className="hover:text-white">
+              {t.footer.terms}
+            </a>
+          </div>
           <p className="font-mono">Japan ⇄ Cambodia</p>
         </div>
       </div>
