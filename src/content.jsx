@@ -119,6 +119,24 @@ const ja = {
       body: "AIに作業を始めさせる「トリガー」と、出てきたものが正しいかを確かめる「検証（バリデーション）」は、まだ人がやるべき仕事です。ENGINEERNESTでは、この部分を人のチームがしっかり埋めます。",
     },
     teamFoot: "1人から始めて、必要に応じて増やせます。",
+    flow: {
+      label: "How we build",
+      title: "要件から、チームをつくる。",
+      intro:
+        "必要なスキルと人数を見極めて人を集め、必要があればプノンペンにオフィスを構えます。開発・運用・セキュリティまで、タスクに応じて動けるチームを組み立てます。",
+      optional: "必要に応じて",
+      steps: [
+        { en: "Requirements", title: "要件を整理", body: "つくりたいものと、必要なスキル・人数・期間を一緒に整理します。", tags: ["スキル", "人数", "期間"] },
+        { en: "Hiring", title: "人を集める", body: "カンボジアのコンピュータサイエンス大学 出身・在籍のエンジニアから、要件に合うメンバーを集めます。" },
+        { en: "Office", title: "プノンペンにオフィス", body: "チームの規模や機密性に応じて、プノンペンに専用のオフィスを構えます。", optional: true },
+        { en: "Your team", title: "チーム始動", body: "タスクに合わせて役割を組み合わせ、開発から運用、セキュリティまで対応します。" },
+      ],
+      roles: [
+        ["dev", "Dev", "開発"],
+        ["ops", "Ops", "運用"],
+        ["sec", "Security", "セキュリティ"],
+      ],
+    },
     pillars: [
       {
         no: "01",
@@ -301,6 +319,24 @@ const en = {
       body: "Someone still has to pull the trigger — decide what the AI should do and set it going — and someone has to validate what comes back. That's still work for people, and our human team fills it.",
     },
     teamFoot: "Start with one engineer and scale when you need to.",
+    flow: {
+      label: "How we build",
+      title: "From requirements to a running team.",
+      intro:
+        "We work out the skills and headcount you need, bring the people together and, when it makes sense, set up an office in Phnom Penh — building a team that covers development, operations and security as your tasks require.",
+      optional: "If needed",
+      steps: [
+        { en: "Requirements", title: "Scope it", body: "Together we pin down what to build and the skills, headcount and timeline it needs.", tags: ["Skills", "Headcount", "Timeline"] },
+        { en: "Hiring", title: "Bring people together", body: "We recruit engineers from a computer science university in Cambodia who fit your requirements." },
+        { en: "Office", title: "Office in Phnom Penh", body: "Depending on team size and confidentiality, we set up a dedicated office in Phnom Penh.", optional: true },
+        { en: "Your team", title: "Up and running", body: "Roles are combined to fit the work — from development to operations and security." },
+      ],
+      roles: [
+        ["dev", "Dev", "Development"],
+        ["ops", "Ops", "Operations"],
+        ["sec", "Security", "Security"],
+      ],
+    },
     pillars: [
       {
         no: "01",

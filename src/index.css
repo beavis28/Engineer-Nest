@@ -90,6 +90,37 @@ body {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
+/* a dot travelling along the team-flow connector: down on mobile, across from md */
+.flow-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 8px;
+  width: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 9999px;
+  background: #5ad1ff;
+  box-shadow: 0 0 12px 3px rgba(90, 209, 255, 0.7);
+  animation: flow-y 5s linear infinite;
+}
+@keyframes flow-y {
+  to {
+    top: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .flow-dot {
+    top: 50%;
+    left: 0;
+    animation-name: flow-x;
+  }
+  @keyframes flow-x {
+    to {
+      left: 100%;
+    }
+  }
+}
+
 /* card with glow that follows the cursor (--x / --y set from JS) */
 .glow-card {
   position: relative;
@@ -117,7 +148,8 @@ body {
   }
   .ticker,
   .float,
-  .pulse-dot {
+  .pulse-dot,
+  .flow-dot {
     animation: none;
   }
   html {

@@ -243,6 +243,120 @@ const Hero = () => {
   );
 };
 
+const Icon = ({ d, className = "h-6 w-6" }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    {d.map((p) => (
+      <path key={p} d={p} />
+    ))}
+  </svg>
+);
+
+const FLOW_ICONS = [
+  ["M8 4h8v3H8z", "M6 5.5H5a1 1 0 00-1 1V20a1 1 0 001 1h14a1 1 0 001-1V6.5a1 1 0 00-1-1h-1", "M8 12h8M8 16h5"],
+  ["M9 11a3.2 3.2 0 100-6.4A3.2 3.2 0 009 11z", "M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6", "M17 11.4a2.4 2.4 0 100-4.8", "M17.5 14.2c2 .5 3.5 2.6 3.5 5.8"],
+  ["M4 21V5l8-2v18", "M12 9h8v12", "M3 21h18", "M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"],
+  ["M12 3l9 5-9 5-9-5 9-5z", "M3 12.5l9 5 9-5", "M3 17l9 5 9-5"],
+];
+
+const ROLE_ICONS = {
+  dev: ["M8 8l-4 4 4 4", "M16 8l4 4-4 4", "M13.5 6l-3 12"],
+  ops: ["M4 12a8 8 0 0113.7-5.6", "M20 12a8 8 0 01-13.7 5.6", "M18 3v4h-4", "M6 21v-4h4"],
+  sec: ["M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z", "M9 12l2 2 4-4"],
+};
+
+// Requirements → hiring → (optional) Phnom Penh office → a team covering dev, ops and security.
+const TeamFlow = ({ f }) => (
+  <div className="reveal mt-4 overflow-hidden rounded-3xl border border-line bg-panel p-7 md:p-10">
+    <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <div>
+        <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-nest-300">{f.label}</p>
+        <h3 className="mt-3 font-display text-2xl font-bold md:text-3xl">{f.title}</h3>
+      </div>
+      <p className="text-sm leading-relaxed text-white/55">{f.intro}</p>
+    </div>
+
+    <ol className="relative mt-12 grid gap-8 md:grid-cols-4 md:gap-5">
+      <div className="flow-track pointer-events-none absolute bottom-7 left-7 top-7 w-px bg-gradient-to-b from-nest-500/70 to-cyan-400/70 md:bottom-auto md:left-[12.5%] md:right-[12.5%] md:h-px md:w-auto md:bg-gradient-to-r">
+        <span className="flow-dot" />
+      </div>
+
+      {f.steps.map((s, i) => {
+        const last = i === f.steps.length - 1;
+        return (
+          <li key={s.en} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
+            <span
+              className={`relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full ring-8 ring-panel ${
+                last
+                  ? "bg-gradient-to-br from-nest-500 to-cyan-400 text-white shadow-[0_0_30px_rgba(47,107,255,0.6)]"
+                  : s.optional
+                    ? "border border-dashed border-cyan-400/70 bg-ink text-cyan-400"
+                    : "border border-nest-400/50 bg-ink text-nest-300"
+              }`}
+            >
+              <Icon d={FLOW_ICONS[i]} />
+            </span>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-white/35">
+                {String(i + 1).padStart(2, "0")} · {s.en}
+              </p>
+              <h4 className="mt-1.5 text-lg font-bold">{s.title}</h4>
+              {s.optional && (
+                <span className="mt-2 inline-block rounded-full border border-dashed border-cyan-400/50 px-2.5 py-0.5 font-mono text-[10px] text-cyan-400">
+                  {f.optional}
+                </span>
+              )}
+              <p className="mt-2 text-sm leading-relaxed text-white/55">{s.body}</p>
+              {s.tags && (
+                <ul className="mt-4 flex flex-wrap gap-1.5 md:justify-center">
+                  {s.tags.map((tag) => (
+                    <li key={tag} className="rounded-md border border-line bg-ink px-2 py-1 font-mono text-[10px] text-white/60">
+                      ✓ {tag}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {i === 1 && (
+                <ul className="mt-4 flex gap-1.5 md:justify-center" aria-hidden="true">
+                  {[1, 0, 1, 1, 0, 1].map((picked, k) => (
+                    <li
+                      key={k}
+                      className={`grid h-7 w-7 place-items-center rounded-full ${
+                        picked ? "bg-nest-500/25 text-cyan-400 ring-1 ring-cyan-400/60" : "bg-white/[0.04] text-white/20"
+                      }`}
+                    >
+                      <Icon d={["M12 11a3 3 0 100-6 3 3 0 000 6z", "M6.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"]} className="h-4 w-4" />
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {s.optional && (
+                <p className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-line bg-ink px-3 py-1 font-mono text-[11px] text-white/70">
+                  <Icon d={["M12 21s-6-5.3-6-10a6 6 0 0112 0c0 4.7-6 10-6 10z", "M12 13a2 2 0 100-4 2 2 0 000 4z"]} className="h-3.5 w-3.5 text-cyan-400" />
+                  Phnom Penh
+                </p>
+              )}
+              {last && (
+                <ul className="mt-4 flex flex-wrap gap-2 md:justify-center">
+                  {f.roles.map(([key, en, label]) => (
+                    <li
+                      key={key}
+                      className="flex items-center gap-1.5 rounded-full border border-nest-400/40 bg-nest-500/10 px-3 py-1.5 text-xs"
+                    >
+                      <Icon d={ROLE_ICONS[key]} className="h-3.5 w-3.5 text-cyan-400" />
+                      <span className="font-semibold">{en}</span>
+                      {en !== label && <span className="text-white/50">{label}</span>}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+);
+
 const AiTeam = () => {
   const { t } = useLang();
   const a = t.aiTeam;
@@ -311,6 +425,8 @@ const AiTeam = () => {
           <p className="mt-5 text-sm text-white/60">{a.teamFoot}</p>
         </div>
       </div>
+
+      <TeamFlow f={a.flow} />
 
       <ol className="mt-4 grid gap-4 md:grid-cols-3">
         {a.pillars.map((p, i) => (
