@@ -67,34 +67,83 @@ const zip = (meta, texts) => meta.map((m, i) => ({ ...m, ...texts[i] }));
 
 const ja = {
   meta: {
-    title: "ENGINEERNEST — AR/VR・AI・モバイル・IoT 開発",
+    title: "ENGINEERNEST — 1人月約$1,000のAI開発チーム | 日本 × カンボジア",
     description:
-      "ENGINEERNESTは日本・シンガポール・カンボジアをつなぎ、カンボジアのエンジニアチームとともに、AR/VR、モバイルアプリ、AI活用、医療系Webサイト、IoTデバイスのPoC研究開発を手がける開発スタジオです。",
+      "ENGINEERNESTは、AIを使いこなすカンボジアのエンジニアで最小構成のAI開発チームを構築・運営・サポートします。1人あたり月約$1,000から、AR/VR、モバイルアプリ、AI活用、医療系Webサイト、IoT PoCまで。",
   },
   nav: { contact: "Contact", cta: "Let's talk →", openMenu: "メニューを開く" },
   footer: {
-    tagline: "日本 × シンガポール × カンボジアのチームで、AR/VR・AI・モバイル・IoT のアイデアをプロダクトに。",
+    tagline: "AIを使いこなすカンボジアのエンジニアで、最小コスト・最大アウトプットの開発チームを。",
     privacy: "プライバシーポリシー",
     terms: "利用規約",
   },
   hero: {
-    badge: ["Dev studio", "Japan × Singapore × Cambodia"],
+    badge: ["AI dev teams", "Japan × Singapore × Cambodia"],
     lead: (
       <>
-        AR/VR、AI、モバイル、IoT。
+        AIを使いこなすカンボジアのエンジニアで、
         <br className="hidden sm:block" />
-        カンボジアの若く優秀なエンジニアチームと、
+        あなた専属の開発チームを。1人あたり
+        <strong className="font-bold text-white">月 約$1,000</strong>から、
         <br className="hidden sm:block" />
-        あなたのアイデアを<strong className="font-bold text-white">“動くプロダクト”</strong>に変えます。
+        最小構成で最大のアウトプットを出します。
       </>
     ),
-    cta: "プロジェクトを相談する",
-    secondary: "Services",
+    cta: "AIチームを相談する",
+    secondary: "仕組みを見る",
+  },
+  aiTeam: {
+    label: "Why ENGINEERNEST",
+    title: ["ソフトウェア開発は、", "もう高くない。"],
+    intro:
+      "AIの登場で、これまで大人数・高コストだったソフトウェア開発は、少人数・低コストで回せるようになりました。ENGINEERNESTは、AIを使いこなすカンボジアのエンジニアで「最小構成のAI開発チーム」をつくり、運営し、サポートします。",
+    compareTitle: "エンジニア1人あたりの月額コスト",
+    compare: [
+      { label: "国内の受託・SES（一般的な目安）", value: "¥80〜120万", width: "100%" },
+      { label: "ENGINEERNEST AIエンジニア", value: "約 $1,000", width: "16%", highlight: true },
+    ],
+    compareNote: "※ 国内相場は一般的な目安です。実際の費用はチーム構成や案件内容によって変わります。",
+    highlights: [
+      ["約$1,000", "1人あたりの月額"],
+      ["AI × 少人数", "最小構成で高速開発"],
+      ["日本側リード", "要件整理と品質管理"],
+    ],
+    teamTitle: "最小構成の例",
+    teamRows: [
+      ["Lead", "日本側リード", "要件整理・設計・レビュー"],
+      ["Engineer", "AIエンジニア × 2", "カンボジア / AIへの指示出しと成果物の検証"],
+      ["Agents", "AIコーディングエージェント", "人の指示でコード生成・テスト・ドキュメント"],
+    ],
+    teamNote: {
+      title: "AIだけでは、開発は回らない。",
+      body: "AIに作業を始めさせる「トリガー」と、出てきたものが正しいかを確かめる「検証（バリデーション）」は、まだ人がやるべき仕事です。ENGINEERNESTでは、この部分を人のチームがしっかり埋めます。",
+    },
+    teamFoot: "1人から始めて、必要に応じて増やせます。",
+    pillars: [
+      {
+        no: "01",
+        en: "Build",
+        title: "チームを構築する",
+        body: "カンボジアのコンピュータサイエンス大学 出身・在籍のエンジニアから案件に合うメンバーを選び、AIコーディングツールと開発フローを整えて、最小構成のチームを立ち上げます。",
+      },
+      {
+        no: "02",
+        en: "Operate",
+        title: "チームを運営する",
+        body: "日本側のリードが要件整理、タスク設計、コードレビューを担当。AIでスピードを出しつつ、品質は人がしっかり見ます。",
+      },
+      {
+        no: "03",
+        en: "Support",
+        title: "チームを支える",
+        body: "リリース後の保守・改善、メンバーの追加や入れ替え、社内へのAI開発の導入まで、長く伴走します。",
+      },
+    ],
   },
   services: {
     label: "Services",
-    title: ["作れるものは、", "けっこう幅広い。"],
-    intro: "最新技術の検証から、しっかり運用するプロダクトまで。受託開発・業務委託・PoCなど、プロジェクトに合わせた形でご一緒します。",
+    title: ["AIチームで、", "つくれるもの。"],
+    intro: "少人数のAIチームでも、カバーできる領域は幅広い。新しい技術の検証から、しっかり運用するプロダクトまでお任せください。",
     items: zip(SERVICE_META, [
       {
         title: "AR・VR コンテンツ制作",
@@ -108,37 +157,36 @@ const ja = {
   },
   team: {
     label: "Team",
-    title: ["日本の品質 ×", "カンボジアの熱量。"],
+    title: ["AIを使いこなす", "カンボジアの若手。"],
+    banner: "From Cambodia, to the world.",
     body: (
       <>
-        開発を担うのは、カンボジアの <strong className="text-white">Kirirom Institute of Technology</strong>{" "}
-        出身・在籍のエンジニアメンバー。最新技術への吸収力が高く、スピード感のある若いチームです。
+        開発を担うのは、<strong className="text-white">カンボジアのコンピュータサイエンス大学</strong>{" "}
+        出身・在籍のエンジニアメンバー。AIツールを毎日の開発で使いこなし、新しい技術をすぐに吸収する若いチームです。
         日本側がプロジェクトをリードし、要件整理から品質管理までしっかり橋渡しします。
       </>
     ),
     points: [
-      ["⚡", "Speed", "小さく作って早く回す"],
-      ["🎯", "Quality", "日本側PMが品質を担保"],
-      ["💡", "Cost", "オフショアで無理なく"],
+      ["💡", "Cost", "1人あたり月 約$1,000"],
+      ["⚡", "Speed", "AI × 少人数で高速開発"],
+      ["🎯", "Quality", "日本側リードが品質を担保"],
     ],
-    japan: "PM・設計・品質",
-    cambodia: "開発・実装・検証",
+    photoAlt: ["カンボジアの開発オフィス", "VR開発中のエンジニア"],
   },
   leader: {
     label: "Leadership",
-    name: "後藤 智",
-    altName: "Satoshi Goto",
+    name: "Satoshi Gotoh",
     roles: ["CTO — Kirirom Institute of Technology", "CTO — BIRD INITIATIVE（BIIM Cloud 開発主導）"],
-    body: "教育機関とクラウド企業、両方のCTOとしての経験をもとに、カンボジアのエンジニアチームを率いています。「おもしろい技術を、ちゃんと役に立つ形に。」がチームのモットーです。",
+    body: "教育機関とクラウド企業、両方のCTOとしての経験をもとに、カンボジアのエンジニアとAI時代の開発チームをつくっています。かつてはアメリカでH-1Bビザを取得し、主にファイナンス系のソフトウェアエンジニアとして長年働いてきました。現在も大企業・スタートアップを問わず、多くの企業をサポートしています。",
   },
   process: {
     label: "Process",
-    title: ["まずは、", "動くものから。"],
+    title: ["小さく始めて、", "大きく育てる。"],
     steps: [
-      { no: "01", title: "Hearing", sub: "ヒアリング", body: "課題とゴールを整理。技術的に何ができるかをその場で一緒に考えます。" },
-      { no: "02", title: "Prototype", sub: "PoC・プロトタイプ", body: "まず動くものを。小さく作って早く検証し、方向性を固めます。" },
-      { no: "03", title: "Build", sub: "開発", body: "日本側PM × カンボジアチームでアジャイル開発。定期的にデモで進捗を共有。" },
-      { no: "04", title: "Launch & Grow", sub: "リリース・運用", body: "ストア公開や本番運用、改善サイクルまで伴走します。" },
+      { no: "01", title: "Hearing", sub: "ヒアリング", body: "課題・ゴール・予算を整理し、必要最小限のチーム構成をご提案します。" },
+      { no: "02", title: "Team Setup", sub: "チーム立ち上げ", body: "メンバーを選び、AI開発環境と開発フローを整備。最短で動ける状態をつくります。" },
+      { no: "03", title: "Build", sub: "開発", body: "日本側リード × カンボジアのAIチームで開発。定期的なデモで進捗を共有します。" },
+      { no: "04", title: "Operate & Grow", sub: "運営・サポート", body: "リリース後の運用・改善に加え、必要に応じてチームを拡張します。" },
     ],
   },
   works: {
@@ -148,7 +196,6 @@ const ja = {
     stats: [
       ["30,000+", "Chrome拡張ユーザー"],
       ["11", "App Store アプリ"],
-      ["3", "著書"],
     ],
     projects: zip(PROJECT_META, [
       {
@@ -188,12 +235,12 @@ const ja = {
   },
   contact: {
     label: "Contact",
-    intro: "「こんなこと出来る？」くらいのラフな相談から大歓迎です。PoCの相談、見積もり、業務委託のご依頼など、お気軽にどうぞ。",
+    intro: "「まずは1人から試したい」「この予算でどこまでできる？」くらいのラフな相談から大歓迎です。AIチームの構築、PoC、見積もりなど、お気軽にどうぞ。",
     name: "お名前",
     email: "メールアドレス",
     company: "会社名（任意）",
     topics: "ご相談内容",
-    interests: ["AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "その他"],
+    interests: ["AIチーム構築", "AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "その他"],
     message: "ご相談の内容を教えてください",
     submit: "送信する",
     sending: "送信中…",
@@ -204,34 +251,81 @@ const ja = {
 
 const en = {
   meta: {
-    title: "ENGINEERNEST — AR/VR, AI, Mobile & IoT Development",
+    title: "ENGINEERNEST — AI dev teams from around $1,000 per engineer | Japan × Cambodia",
     description:
-      "ENGINEERNEST is a development studio connecting Japan, Singapore and Cambodia, working with an engineering team in Cambodia on AR/VR, mobile apps, AI solutions, medical websites and IoT proof-of-concept R&D.",
+      "ENGINEERNEST builds, runs and supports lean AI-powered development teams of Cambodian engineers — from around $1,000 per engineer per month — for AR/VR, mobile apps, AI solutions, medical websites and IoT PoCs.",
   },
   nav: { contact: "Contact", cta: "Let's talk →", openMenu: "Open menu" },
   footer: {
-    tagline: "A Japan × Singapore × Cambodia team turning AR/VR, AI, mobile and IoT ideas into real products.",
+    tagline: "Lean, AI-powered development teams of Cambodian engineers — minimum cost, maximum output.",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
   },
   hero: {
-    badge: ["Dev studio", "Japan × Singapore × Cambodia"],
+    badge: ["AI dev teams", "Japan × Singapore × Cambodia"],
     lead: (
       <>
-        AR/VR, AI, mobile and IoT.
+        Your own development team of AI-savvy engineers in Cambodia.
         <br className="hidden sm:block" />
-        Together with our talented young engineers in Cambodia,
-        <br className="hidden sm:block" />
-        we turn your ideas into <strong className="font-bold text-white">products that actually work.</strong>
+        From <strong className="font-bold text-white">around $1,000 per engineer per month</strong>
+        <br className="hidden sm:block" />— the smallest team, the biggest output.
       </>
     ),
-    cta: "Start a project",
-    secondary: "Services",
+    cta: "Talk about your AI team",
+    secondary: "How it works",
+  },
+  aiTeam: {
+    label: "Why ENGINEERNEST",
+    title: ["Software doesn't have", "to be expensive anymore."],
+    intro:
+      "AI has changed the economics of software. Work that used to need large, expensive teams can now be done by a few people. ENGINEERNEST builds, runs and supports minimum-size AI development teams of Cambodian engineers who use AI every day.",
+    compareTitle: "Monthly cost per engineer",
+    compare: [
+      { label: "Typical contract engineer in Japan (market estimate)", value: "¥0.8–1.2M", width: "100%" },
+      { label: "ENGINEERNEST AI engineer", value: "around $1,000", width: "16%", highlight: true },
+    ],
+    compareNote: "Japanese market figures are general estimates. Actual costs depend on team composition and project scope.",
+    highlights: [
+      ["Around $1,000", "per engineer / month"],
+      ["AI × small team", "lean and fast"],
+      ["Japan-side lead", "requirements & QA"],
+    ],
+    teamTitle: "A minimum team, for example",
+    teamRows: [
+      ["Lead", "Japan-side lead", "Requirements · design · review"],
+      ["Engineer", "AI engineers × 2", "Cambodia · direct the AI, validate its output"],
+      ["Agents", "AI coding agents", "Code · tests · docs, on human instruction"],
+    ],
+    teamNote: {
+      title: "AI alone doesn't ship software.",
+      body: "Someone still has to pull the trigger — decide what the AI should do and set it going — and someone has to validate what comes back. That's still work for people, and our human team fills it.",
+    },
+    teamFoot: "Start with one engineer and scale when you need to.",
+    pillars: [
+      {
+        no: "01",
+        en: "Build",
+        title: "We build your team",
+        body: "We pick the right engineers from a computer science university in Cambodia, set up AI coding tools and a development workflow, and launch a minimum-size team.",
+      },
+      {
+        no: "02",
+        en: "Operate",
+        title: "We run it",
+        body: "A Japan-side lead handles requirements, task design and code review. AI brings the speed; people keep the quality.",
+      },
+      {
+        no: "03",
+        en: "Support",
+        title: "We keep supporting it",
+        body: "Maintenance and improvements after launch, adding or rotating members, and helping you bring AI-driven development in-house.",
+      },
+    ],
   },
   services: {
     label: "Services",
-    title: ["We build", "a lot of things."],
-    intro: "From validating new technology to products that run in production. Contract development, outsourcing or PoC — we work the way your project needs.",
+    title: ["What an AI team", "can build for you."],
+    intro: "A small AI team covers a surprising amount of ground — from validating new technology to products that run in production.",
     items: zip(SERVICE_META, [
       {
         title: "AR / VR Experiences",
@@ -245,38 +339,37 @@ const en = {
   },
   team: {
     label: "Team",
-    title: ["Japanese quality ×", "Cambodian energy."],
+    title: ["Young engineers,", "fluent in AI."],
+    banner: "From Cambodia, to the world.",
     body: (
       <>
-        Development is handled by engineers from{" "}
-        <strong className="text-white">Kirirom Institute of Technology</strong> in Cambodia — a young, fast-moving team
-        that picks up new technology quickly. The Japan side leads each project and bridges everything from
-        requirements to quality assurance.
+        Development is handled by graduates and students of{" "}
+        <strong className="text-white">a computer science university in Cambodia</strong> — a young team that uses AI
+        tools in everyday development and picks up new technology quickly. The Japan side leads each project and
+        bridges everything from requirements to quality assurance.
       </>
     ),
     points: [
-      ["⚡", "Speed", "Build small, iterate fast"],
-      ["🎯", "Quality", "Japan-side PM owns quality"],
-      ["💡", "Cost", "Offshore, without the trade-offs"],
+      ["💡", "Cost", "Around $1,000 per engineer / month"],
+      ["⚡", "Speed", "AI × small team, shipped fast"],
+      ["🎯", "Quality", "Japan-side lead owns quality"],
     ],
-    japan: "PM · Design · QA",
-    cambodia: "Development · Testing",
+    photoAlt: ["Our development office in Cambodia", "An engineer building a VR app"],
   },
   leader: {
     label: "Leadership",
-    name: "Satoshi Goto",
-    altName: "後藤 智",
+    name: "Satoshi Gotoh",
     roles: ["CTO — Kirirom Institute of Technology", "CTO — BIRD INITIATIVE (leading BIIM Cloud development)"],
-    body: "Drawing on his experience as CTO of both an educational institution and a cloud company, he leads our engineering team in Cambodia. Our motto: take interesting technology and make it genuinely useful.",
+    body: "Drawing on his experience as CTO of both an educational institution and a cloud company, he builds AI-era development teams with our engineers in Cambodia. Earlier, he worked in the United States on an H-1B visa as a software engineer for many years, mainly in finance. Today he continues to support many companies, from large enterprises to startups.",
   },
   process: {
     label: "Process",
-    title: ["Start with", "something that works."],
+    title: ["Start small,", "grow big."],
     steps: [
-      { no: "01", title: "Hearing", sub: "Discovery", body: "We clarify the problem and the goal, and work out together what's technically possible." },
-      { no: "02", title: "Prototype", sub: "PoC", body: "Something working first. Build small, validate fast and lock in the direction." },
-      { no: "03", title: "Build", sub: "Development", body: "Agile development with a Japan-side PM and the Cambodia team, with regular demos along the way." },
-      { no: "04", title: "Launch & Grow", sub: "Release & operation", body: "We stay with you through store release, production operation and continuous improvement." },
+      { no: "01", title: "Hearing", sub: "Discovery", body: "We clarify your goals and budget, and propose the smallest team that can get there." },
+      { no: "02", title: "Team Setup", sub: "Launch the team", body: "We pick the members and set up AI tooling and the workflow, so the team is productive from day one." },
+      { no: "03", title: "Build", sub: "Development", body: "A Japan-side lead and the Cambodian AI team build together, with regular demos along the way." },
+      { no: "04", title: "Operate & Grow", sub: "Run & support", body: "Operation and improvement after launch — and we scale the team when you need it." },
     ],
   },
   works: {
@@ -286,7 +379,6 @@ const en = {
     stats: [
       ["30,000+", "Chrome extension users"],
       ["11", "App Store apps"],
-      ["3", "Published books"],
     ],
     projects: zip(PROJECT_META, [
       {
@@ -326,12 +418,12 @@ const en = {
   },
   contact: {
     label: "Contact",
-    intro: "Even a rough \"is this possible?\" is welcome. PoC ideas, estimates or outsourcing requests — feel free to reach out.",
+    intro: "\"Can we try with one engineer?\" \"What can we get for this budget?\" — rough questions are welcome. AI teams, PoCs or estimates, feel free to reach out.",
     name: "Name",
     email: "Email",
     company: "Company (optional)",
     topics: "What can we help with?",
-    interests: ["AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "Other"],
+    interests: ["AI team", "AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "Other"],
     message: "Tell us about your project",
     submit: "Send",
     sending: "Sending…",

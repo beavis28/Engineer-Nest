@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LangSwitch, useLang } from "./i18n";
 
 export const NAV_LINKS = [
+  { href: "/#ai-team", label: "AI Team" },
   { href: "/#services", label: "Services" },
   { href: "/#team", label: "Team" },
   { href: "/#process", label: "Process" },
@@ -13,9 +14,9 @@ export const Logo = () => (
     <img
       src="/brand/engineernest-icon.svg"
       alt=""
-      className="h-10 w-10 drop-shadow-[0_0_12px_rgba(47,107,255,0.6)] transition-transform duration-500 group-hover:rotate-45"
+      className="h-9 w-9 shrink-0 drop-shadow-[0_0_12px_rgba(47,107,255,0.6)] transition-transform duration-500 group-hover:rotate-45"
     />
-    <span className="font-display text-lg font-bold tracking-[0.18em]">
+    <span className="font-display text-base font-bold tracking-[0.12em] sm:text-lg sm:tracking-[0.18em]">
       ENGINEER<span className="text-nest-400">NEST</span>
     </span>
   </a>

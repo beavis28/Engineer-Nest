@@ -40,7 +40,7 @@ const SectionLabel = ({ no, children }) => (
 );
 
 // Section heading: first line plain, second line in the gradient.
-const Heading = ({ lines, className = "font-display text-4xl font-bold leading-tight md:text-5xl xl:text-6xl" }) => (
+const Heading = ({ lines, className = "font-display text-[2rem] font-bold leading-tight sm:text-4xl md:text-5xl xl:text-6xl" }) => (
   <h2 className={className}>
     {lines[0]}
     <br />
@@ -165,9 +165,9 @@ const Hero = () => {
             {t.hero.badge[1]}
           </p>
           <h1 className="font-display text-[clamp(3rem,9vw,7.25rem)] font-bold leading-[0.92] tracking-tight">
-            Build the
+            Small team.
             <br />
-            <span className="text-gradient">next reality.</span>
+            <span className="text-gradient">Big output.</span>
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">{t.hero.lead}</p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -179,7 +179,7 @@ const Hero = () => {
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
-              href="#services"
+              href="#ai-team"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-4 font-display font-semibold text-white/80 transition hover:border-white/40 hover:text-white"
             >
               {t.hero.secondary}
@@ -196,22 +196,22 @@ const Hero = () => {
             <HeroGlobe />
 
             <span className="float absolute left-0 top-[12%] rounded-2xl border border-line bg-panel/90 px-4 py-2.5 font-display text-sm font-semibold shadow-2xl backdrop-blur">
-              🥽 AR / VR
+              🧑‍💻 Human team
             </span>
             <span
               className="float absolute right-0 top-[30%] rounded-2xl border border-line bg-panel/90 px-4 py-2.5 font-display text-sm font-semibold shadow-2xl backdrop-blur"
               style={{ animationDelay: "-2s" }}
             >
-              🧠 AI
+              🤖 AI agents
             </span>
             <span
               className="float absolute bottom-[22%] left-[2%] rounded-2xl border border-line bg-panel/90 px-4 py-2.5 font-display text-sm font-semibold shadow-2xl backdrop-blur"
               style={{ animationDelay: "-4s" }}
             >
-              📡 IoT PoC
+              ✅ Human validation
             </span>
             <div
-              className="float absolute bottom-[4%] right-[2%] w-52 rounded-2xl border border-line bg-panel/90 p-4 font-mono text-[11px] leading-relaxed shadow-2xl backdrop-blur"
+              className="float absolute bottom-[4%] right-[2%] hidden w-52 rounded-2xl sm:block border border-line bg-panel/90 p-4 font-mono text-[11px] leading-relaxed shadow-2xl backdrop-blur"
               style={{ animationDelay: "-1s" }}
             >
               <div className="mb-2 flex gap-1.5">
@@ -219,8 +219,8 @@ const Hero = () => {
                 <span className="h-2 w-2 rounded-full bg-white/20" />
                 <span className="h-2 w-2 rounded-full bg-nest-400" />
               </div>
-              <p className="text-white/40">$ nest deploy</p>
-              <p className="text-cyan-400">✓ prototype ready</p>
+              <p className="text-white/40">$ nest team --size=min</p>
+              <p className="text-cyan-400">✓ humans + AI agents</p>
               <p className="text-white/70">
                 → shipping<span className="animate-pulse">_</span>
               </p>
@@ -243,13 +243,103 @@ const Hero = () => {
   );
 };
 
+const AiTeam = () => {
+  const { t } = useLang();
+  const a = t.aiTeam;
+  return (
+    <section id="ai-team" className="relative mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+      <div className="reveal mb-14 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+        <div>
+          <SectionLabel no="01">{a.label}</SectionLabel>
+          <Heading lines={a.title} />
+        </div>
+        <p className="leading-relaxed text-white/60">{a.intro}</p>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-5">
+        <div className="reveal rounded-3xl border border-line bg-panel p-7 md:p-9 lg:col-span-3">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-nest-300">{a.compareTitle}</p>
+          <ul className="mt-8 space-y-7">
+            {a.compare.map((c) => (
+              <li key={c.label}>
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className={`text-sm ${c.highlight ? "font-semibold text-white" : "text-white/55"}`}>{c.label}</span>
+                  <span
+                    className={`shrink-0 font-display font-bold ${c.highlight ? "text-gradient text-3xl md:text-4xl" : "text-xl text-white/60 md:text-2xl"}`}
+                  >
+                    {c.value}
+                  </span>
+                </div>
+                <div className="mt-3 h-3 overflow-hidden rounded-full bg-white/[0.05]">
+                  <div
+                    className={`h-full rounded-full ${c.highlight ? "bg-gradient-to-r from-nest-500 to-cyan-400" : "bg-white/20"}`}
+                    style={{ width: c.width }}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+          <dl className="mt-10 grid divide-y divide-line rounded-2xl border border-line bg-ink/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {a.highlights.map(([n, l]) => (
+              <div key={l} className="flex items-baseline justify-between gap-4 px-5 py-4 sm:block sm:px-3 sm:py-5 sm:text-center">
+                <dt className="sr-only">{l}</dt>
+                <dd className="font-display text-base font-bold md:text-2xl">{n}</dd>
+                <dd className="mt-1 text-[11px] text-white/45 md:text-xs">{l}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-5 text-[11px] leading-relaxed text-white/35">{a.compareNote}</p>
+        </div>
+
+        <div className="reveal flex flex-col rounded-3xl border border-nest-400/30 bg-gradient-to-b from-nest-500/15 to-panel p-7 md:p-9 lg:col-span-2">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-nest-300">{a.teamTitle}</p>
+          <ul className="mt-8 flex-1 space-y-3">
+            {a.teamRows.map(([role, name, desc]) => (
+              <li key={role} className="flex items-center gap-4 rounded-2xl border border-line bg-ink/70 p-4">
+                <span className="w-20 shrink-0 font-mono text-[10px] uppercase tracking-widest text-cyan-400">{role}</span>
+                <div>
+                  <p className="font-bold">{name}</p>
+                  <p className="text-xs text-white/50">{desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/[0.06] p-4">
+            <p className="text-sm font-bold text-cyan-400">{a.teamNote.title}</p>
+            <p className="mt-1.5 text-xs leading-relaxed text-white/65">{a.teamNote.body}</p>
+          </div>
+          <p className="mt-5 text-sm text-white/60">{a.teamFoot}</p>
+        </div>
+      </div>
+
+      <ol className="mt-4 grid gap-4 md:grid-cols-3">
+        {a.pillars.map((p, i) => (
+          <li
+            key={p.no}
+            onMouseMove={trackGlow}
+            className="glow-card reveal group rounded-3xl border border-line bg-panel p-7 transition-colors hover:border-nest-400/40 md:p-8"
+            style={{ transitionDelay: `${i * 80}ms` }}
+          >
+            <div className="flex items-baseline justify-between">
+              <p className="font-display text-3xl font-bold">{p.en}</p>
+              <span className="font-mono text-xs text-white/30">{p.no}</span>
+            </div>
+            <h3 className="mt-4 text-lg font-bold text-nest-300">{p.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-white/55">{p.body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+};
+
 const Services = () => {
   const { t } = useLang();
   return (
-    <section id="services" className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+    <section id="services" className="mx-auto max-w-7xl border-t border-line px-5 py-24 md:px-8 md:py-32">
       <div className="reveal mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
-          <SectionLabel no="01">{t.services.label}</SectionLabel>
+          <SectionLabel no="02">{t.services.label}</SectionLabel>
           <Heading lines={t.services.title} />
         </div>
         <p className="max-w-md text-white/55">{t.services.intro} </p>
@@ -305,11 +395,18 @@ const Services = () => {
 const Team = () => {
   const { t } = useLang();
   return (
-    <section id="team" className="relative overflow-hidden border-y border-line bg-panel/60 py-24 md:py-32">
-      <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-nest-500/15 blur-[120px]" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 md:px-8 lg:grid-cols-2">
+    <section id="team" className="relative overflow-hidden border-y border-line bg-panel/60 pb-24 md:pb-32">
+      <div className="relative h-[75vh] min-h-[420px] w-full overflow-hidden md:h-[85vh]">
+        <img src="/img/team/temple-path.jpg" alt="" className="h-full w-full object-cover object-[50%_58%]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent via-40% to-[#090c16]" />
+        <p className="absolute inset-x-0 bottom-10 mx-auto max-w-7xl px-5 font-display text-[clamp(1.75rem,5vw,4rem)] font-bold leading-tight md:px-8">
+          {t.team.banner}
+        </p>
+      </div>
+      <div className="pointer-events-none absolute right-0 top-1/2 h-96 w-96 rounded-full bg-nest-500/15 blur-[120px]" />
+      <div className="relative mx-auto mt-16 grid max-w-7xl items-center gap-16 px-5 md:mt-20 md:px-8 lg:grid-cols-2">
         <div className="reveal">
-          <SectionLabel no="02">{t.team.label}</SectionLabel>
+          <SectionLabel no="03">{t.team.label}</SectionLabel>
           <Heading lines={t.team.title} />
           <p className="mt-8 leading-relaxed text-white/60">{t.team.body}</p>
           <ul className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -323,39 +420,22 @@ const Team = () => {
           </ul>
         </div>
 
-        <div className="reveal relative aspect-square w-full max-w-lg justify-self-center" aria-hidden="true">
-          <svg viewBox="0 0 400 400" className="h-full w-full">
-            <defs>
-              <linearGradient id="arc" x1="0" x2="1">
-                <stop offset="0" stopColor="#5ad1ff" />
-                <stop offset="1" stopColor="#2f6bff" />
-              </linearGradient>
-            </defs>
-            {[60, 110, 160].map((r) => (
-              <circle key={r} cx="200" cy="200" r={r} fill="none" stroke="rgba(255,255,255,0.06)" />
-            ))}
-            <path d="M300 90 Q 180 60 110 290" fill="none" stroke="url(#arc)" strokeWidth="2" strokeDasharray="6 8">
-              <animate attributeName="stroke-dashoffset" from="0" to="-140" dur="3s" repeatCount="indefinite" />
-            </path>
-            <circle cx="300" cy="90" r="7" fill="#5ad1ff" />
-            <circle cx="300" cy="90" r="18" fill="none" stroke="#5ad1ff" opacity="0.4">
-              <animate attributeName="r" values="8;26;8" dur="3s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite" />
-            </circle>
-            <circle cx="110" cy="290" r="7" fill="#2f6bff" />
-            <circle cx="110" cy="290" r="18" fill="none" stroke="#2f6bff" opacity="0.4">
-              <animate attributeName="r" values="8;26;8" dur="3s" begin="1.5s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" begin="1.5s" repeatCount="indefinite" />
-            </circle>
-          </svg>
-          <div className="absolute right-[2%] top-[8%] rounded-xl border border-line bg-ink/80 px-4 py-2 backdrop-blur">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-cyan-400">Japan</p>
-            <p className="text-sm font-bold">{t.team.japan}</p>
-          </div>
-          <div className="absolute bottom-[12%] left-0 rounded-xl border border-line bg-ink/80 px-4 py-2 backdrop-blur">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-nest-300">Cambodia</p>
-            <p className="text-sm font-bold">{t.team.cambodia}</p>
-          </div>
+        <div className="reveal relative mx-auto w-full max-w-lg">
+          <img
+            src="/img/team/office.jpg"
+            alt={t.team.photoAlt[0]}
+            loading="lazy"
+            className="aspect-[4/5] w-4/5 rounded-3xl border border-line object-cover"
+          />
+          <img
+            src="/img/team/vr-dev.jpg"
+            alt={t.team.photoAlt[1]}
+            loading="lazy"
+            className="absolute -bottom-8 right-0 aspect-[3/4] w-1/2 rounded-3xl border-4 border-[#0a0d18] object-cover shadow-2xl"
+          />
+          <span className="absolute left-4 top-4 rounded-full border border-line bg-ink/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-cyan-400 backdrop-blur">
+            Cambodia
+          </span>
         </div>
       </div>
     </section>
@@ -366,7 +446,7 @@ const Ceo = () => {
   const { t } = useLang();
   return (
     <section id="ceo" className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-24">
-      <SectionLabel no="03">{t.leader.label}</SectionLabel>
+      <SectionLabel no="04">{t.leader.label}</SectionLabel>
       <div className="reveal grid gap-8 rounded-3xl border border-line bg-panel p-7 md:grid-cols-[auto_1fr] md:items-center md:p-9">
         <div className="flex items-center gap-5">
           <img
@@ -376,10 +456,7 @@ const Ceo = () => {
           />
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-nest-300">CEO</p>
-            <p className="mt-1 text-lg font-bold">
-              {t.leader.name}{" "}
-              <span className="ml-1 font-display text-sm font-medium text-white/45">{t.leader.altName}</span>
-            </p>
+            <p className="mt-1 text-lg font-bold">{t.leader.name}</p>
           </div>
         </div>
 
@@ -404,7 +481,7 @@ const Process = () => {
     <section id="process" className="border-t border-line py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="reveal mb-14">
-          <SectionLabel no="04">{t.process.label}</SectionLabel>
+          <SectionLabel no="05">{t.process.label}</SectionLabel>
           <Heading lines={t.process.title} />
         </div>
         <ol className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-4">
@@ -448,13 +525,13 @@ const Works = () => {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <SectionLabel no="05">{t.works.label}</SectionLabel>
+            <SectionLabel no="06">{t.works.label}</SectionLabel>
             <Heading lines={t.works.title} />
           </div>
           <p className="max-w-md text-white/55">{t.works.intro}</p>
         </div>
 
-        <dl className="reveal mt-14 grid grid-cols-3 divide-x divide-line rounded-3xl border border-line bg-ink">
+        <dl className="reveal mt-14 grid grid-cols-2 divide-x divide-line rounded-3xl border border-line bg-ink">
           {t.works.stats.map(([n, l]) => (
             <div key={l} className="px-4 py-7 text-center md:py-10">
               <dt className="sr-only">{l}</dt>
@@ -615,7 +692,7 @@ const Contact = () => {
       <div className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[800px] -translate-x-1/2 rounded-full bg-nest-500/20 blur-[160px]" />
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 md:px-8 lg:grid-cols-2">
         <div className="reveal">
-          <SectionLabel no="06">{c.label}</SectionLabel>
+          <SectionLabel no="07">{c.label}</SectionLabel>
           <h2 className="font-display text-5xl font-bold leading-[0.95] md:text-7xl">
             Let's build
             <br />
@@ -694,6 +771,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <AiTeam />
       <Services />
       <Team />
       <Ceo />
