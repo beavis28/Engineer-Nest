@@ -500,6 +500,16 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
+              {s.points && (
+                <dl className="mt-6 grid gap-3 md:grid-cols-3">
+                  {s.points.map(([h, d]) => (
+                    <div key={h} className="rounded-2xl border border-line bg-ink/60 p-4">
+                      <dt className="font-semibold text-cyan-400">{h}</dt>
+                      <dd className="mt-1.5 text-xs leading-relaxed text-white/55">{d}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
             </div>
           </article>
         ))}

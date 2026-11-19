@@ -18,7 +18,13 @@ const SERVICE_META = [
   { no: "02", en: "Mobile", tags: ["Swift", "Kotlin", "Flutter", "watchOS"] },
   { no: "03", en: "AI", tags: ["LLM", "RAG", "Agents", "Vision"] },
   { no: "04", en: "Medical Web", tags: ["Design", "CMS", "SEO"] },
-  { no: "05", en: "IoT PoC", tags: ["ESP32", "Raspberry Pi", "BLE", "Cloud"], span: "md:col-span-2" },
+  { no: "05", en: "IoT PoC", tags: ["ESP32", "Raspberry Pi", "BLE", "Cloud"] },
+  {
+    no: "06",
+    en: "Security",
+    tags: ["PHP", "Node.js", "Linux Kernel", "CVE", "IPS / IDPS", "Monitoring"],
+    span: "md:col-span-4",
+  },
 ];
 
 const PROJECT_META = [
@@ -171,6 +177,15 @@ const ja = {
       { title: "AI活用・業務委託", body: "LLM・画像認識を使った業務自動化や社内ツール。現場で「使える」AIを素早く形に。" },
       { title: "医療関連ホームページ制作", body: "クリニック・医療機関向けのWebサイト。信頼感のあるデザインと、更新しやすい仕組みを。" },
       { title: "IoTデバイス PoC・研究開発", body: "センサー、組み込み、クラウド連携まで。アイデアを検証できるプロトタイプを短期間で。" },
+      {
+        title: "セキュリティ対策・運用サポート",
+        body: "PHP・Node.jsからLinuxカーネルまでの脆弱性対応と、IPS / IDPSによる侵入検知・防御の継続運用。作って終わりではなく、守り続ける体制をつくります。",
+        points: [
+          ["脆弱性対応", "PHP・Node.js・Linuxカーネルの脆弱性を調べ、アップデートやパッチ適用まで対応します。"],
+          ["IPS / IDPS", "侵入検知・防御システムを導入し、継続的に運用・チューニングします。"],
+          ["セキュリティサポート", "設定の見直しや診断結果への対応など、日々のセキュリティの相談に応えます。"],
+        ],
+      },
     ]),
   },
   team: {
@@ -258,7 +273,7 @@ const ja = {
     email: "メールアドレス",
     company: "会社名（任意）",
     topics: "ご相談内容",
-    interests: ["AIチーム構築", "AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "その他"],
+    interests: ["AIチーム構築", "AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "セキュリティ", "その他"],
     message: "ご相談の内容を教えてください",
     submit: "送信する",
     sending: "送信中…",
@@ -371,6 +386,15 @@ const en = {
       { title: "AI Solutions", body: "Workflow automation and internal tools powered by LLMs and computer vision. AI that's actually useful on the ground, built fast." },
       { title: "Medical Websites", body: "Websites for clinics and medical institutions. Trustworthy design with content that's easy to keep up to date." },
       { title: "IoT PoC & R&D", body: "Sensors, embedded systems and cloud integration. Prototypes that let you validate an idea, built in a short time." },
+      {
+        title: "Security & Ongoing Protection",
+        body: "Vulnerability response from PHP and Node.js down to the Linux kernel, plus continuous intrusion detection and prevention with IPS / IDPS. Not just building it — keeping it safe.",
+        points: [
+          ["Vulnerability response", "We track vulnerabilities in PHP, Node.js and the Linux kernel and handle updates and patching."],
+          ["IPS / IDPS", "We deploy intrusion detection and prevention systems and keep running and tuning them."],
+          ["Security support", "Configuration reviews, follow-up on audit findings and everyday security questions."],
+        ],
+      },
     ]),
   },
   team: {
@@ -459,7 +483,7 @@ const en = {
     email: "Email",
     company: "Company (optional)",
     topics: "What can we help with?",
-    interests: ["AI team", "AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "Other"],
+    interests: ["AI team", "AR / VR", "Mobile", "AI", "Medical Web", "IoT PoC", "Security", "Other"],
     message: "Tell us about your project",
     submit: "Send",
     sending: "Sending…",
