@@ -126,16 +126,34 @@ const ja = {
     },
     teamFoot: "1人から始めて、必要に応じて増やせます。",
     flow: {
-      label: "How we build",
-      title: "要件から、チームをつくる。",
+      label: "How we work",
+      title: "チームのつくり方は、2通り。",
       intro:
-        "必要なスキルと人数を見極めて人を集め、必要があればプノンペンにオフィスを構えます。開発・運用・セキュリティまで、タスクに応じて動けるチームを組み立てます。",
+        "要件に合わせて専属のチームを一からつくることも、すでに動いている私たちのチームで、一時的に開発・運用を支えることもできます。",
       optional: "必要に応じて",
-      steps: [
-        { en: "Requirements", title: "要件を整理", body: "つくりたいものと、必要なスキル・人数・期間を一緒に整理します。", tags: ["スキル", "人数", "期間"] },
-        { en: "Hiring", title: "人を集める", body: "カンボジアのコンピュータサイエンス大学 出身・在籍のエンジニアから、要件に合うメンバーを集めます。" },
-        { en: "Office", title: "プノンペンにオフィス", body: "チームの規模や機密性に応じて、プノンペンに専用のオフィスを構えます。", optional: true },
-        { en: "Your team", title: "チーム始動", body: "タスクに合わせて役割を組み合わせ、開発から運用、セキュリティまで対応します。" },
+      patterns: [
+        {
+          label: "Pattern A",
+          title: "専属チームをつくる",
+          summary: "要件に合わせて人を集め、必要があればプノンペンにオフィスを構えて、あなた専属のチームを立ち上げます。",
+          steps: [
+            { icon: "req", en: "Requirements", title: "要件を整理", body: "つくりたいものと、必要なスキル・人数・期間を一緒に整理します。", tags: ["スキル", "人数", "期間"] },
+            { icon: "hire", en: "Hiring", title: "人を集める", body: "カンボジアのコンピュータサイエンス大学 出身・在籍のエンジニアから、要件に合うメンバーを集めます。", people: [1, 0, 1, 1, 0, 1] },
+            { icon: "office", en: "Office", title: "プノンペンにオフィス", body: "チームの規模や機密性に応じて、プノンペンに専用のオフィスを構えます。", optional: true, pin: "Phnom Penh" },
+            { icon: "team", en: "Your team", title: "チーム始動", body: "タスクに合わせて役割を組み合わせ、開発から運用、セキュリティまで対応します。", roles: true, highlight: true },
+          ],
+        },
+        {
+          label: "Pattern B",
+          title: "既存チームで一時サポート",
+          summary: "すでに稼働しているENGINEERNESTのチームが、必要な期間だけ開発・運用に入ります。採用を待たずにすぐ始められます。",
+          steps: [
+            { icon: "chat", en: "Consult", title: "ご相談", body: "困っていること、サポートしてほしい範囲と期間を伺います。", tags: ["範囲", "スキル", "期間"] },
+            { icon: "assign", en: "Assign", title: "既存チームをアサイン", body: "すでに稼働しているメンバーから、内容に合う人をアサイン。採用を待たずに始められます。", people: [1, 1, 1, 0] },
+            { icon: "team", en: "Support", title: "開発・運用をサポート", body: "開発の追い込み、リリース後の運用、セキュリティ対応など、必要な期間だけチームに入ります。", roles: true, highlight: true },
+            { icon: "handoff", en: "Hand-off", title: "引き継ぎ・延長", body: "終了時はドキュメントを残して引き継ぎます。延長や、専属チームへの切り替えもできます。" },
+          ],
+        },
       ],
       roles: [
         ["dev", "Dev", "開発"],
@@ -335,16 +353,34 @@ const en = {
     },
     teamFoot: "Start with one engineer and scale when you need to.",
     flow: {
-      label: "How we build",
-      title: "From requirements to a running team.",
+      label: "How we work",
+      title: "Two ways to work with us.",
       intro:
-        "We work out the skills and headcount you need, bring the people together and, when it makes sense, set up an office in Phnom Penh — building a team that covers development, operations and security as your tasks require.",
+        "We can build a dedicated team from scratch around your requirements — or put our existing, already-running team on your project to support development and operations for as long as you need.",
       optional: "If needed",
-      steps: [
-        { en: "Requirements", title: "Scope it", body: "Together we pin down what to build and the skills, headcount and timeline it needs.", tags: ["Skills", "Headcount", "Timeline"] },
-        { en: "Hiring", title: "Bring people together", body: "We recruit engineers from a computer science university in Cambodia who fit your requirements." },
-        { en: "Office", title: "Office in Phnom Penh", body: "Depending on team size and confidentiality, we set up a dedicated office in Phnom Penh.", optional: true },
-        { en: "Your team", title: "Up and running", body: "Roles are combined to fit the work — from development to operations and security." },
+      patterns: [
+        {
+          label: "Pattern A",
+          title: "Build a dedicated team",
+          summary: "We bring the right people together and, if needed, set up an office in Phnom Penh to launch a team that's yours.",
+          steps: [
+            { icon: "req", en: "Requirements", title: "Scope it", body: "Together we pin down what to build and the skills, headcount and timeline it needs.", tags: ["Skills", "Headcount", "Timeline"] },
+            { icon: "hire", en: "Hiring", title: "Bring people together", body: "We recruit engineers from a computer science university in Cambodia who fit your requirements.", people: [1, 0, 1, 1, 0, 1] },
+            { icon: "office", en: "Office", title: "Office in Phnom Penh", body: "Depending on team size and confidentiality, we set up a dedicated office in Phnom Penh.", optional: true, pin: "Phnom Penh" },
+            { icon: "team", en: "Your team", title: "Up and running", body: "Roles are combined to fit the work — from development to operations and security.", roles: true, highlight: true },
+          ],
+        },
+        {
+          label: "Pattern B",
+          title: "Temporary support from our team",
+          summary: "Our existing team joins your development or operations for as long as you need. No waiting for hiring — start right away.",
+          steps: [
+            { icon: "chat", en: "Consult", title: "Talk it through", body: "Tell us what's going on, what you need help with and for how long.", tags: ["Scope", "Skills", "Duration"] },
+            { icon: "assign", en: "Assign", title: "Assign our team", body: "We assign members from our running team who fit the work — no hiring wait.", people: [1, 1, 1, 0] },
+            { icon: "team", en: "Support", title: "Support dev & ops", body: "Crunch-time development, post-launch operations or security work — we join for exactly the period you need.", roles: true, highlight: true },
+            { icon: "handoff", en: "Hand-off", title: "Hand off or extend", body: "We leave documentation and hand everything over at the end — or extend, or switch to a dedicated team." },
+          ],
+        },
       ],
       roles: [
         ["dev", "Dev", "Development"],

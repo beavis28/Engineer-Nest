@@ -251,12 +251,15 @@ const Icon = ({ d, className = "h-6 w-6" }) => (
   </svg>
 );
 
-const FLOW_ICONS = [
-  ["M8 4h8v3H8z", "M6 5.5H5a1 1 0 00-1 1V20a1 1 0 001 1h14a1 1 0 001-1V6.5a1 1 0 00-1-1h-1", "M8 12h8M8 16h5"],
-  ["M9 11a3.2 3.2 0 100-6.4A3.2 3.2 0 009 11z", "M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6", "M17 11.4a2.4 2.4 0 100-4.8", "M17.5 14.2c2 .5 3.5 2.6 3.5 5.8"],
-  ["M4 21V5l8-2v18", "M12 9h8v12", "M3 21h18", "M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"],
-  ["M12 3l9 5-9 5-9-5 9-5z", "M3 12.5l9 5 9-5", "M3 17l9 5 9-5"],
-];
+const FLOW_ICONS = {
+  req: ["M8 4h8v3H8z", "M6 5.5H5a1 1 0 00-1 1V20a1 1 0 001 1h14a1 1 0 001-1V6.5a1 1 0 00-1-1h-1", "M8 12h8M8 16h5"],
+  hire: ["M9 11a3.2 3.2 0 100-6.4A3.2 3.2 0 009 11z", "M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6", "M17 11.4a2.4 2.4 0 100-4.8", "M17.5 14.2c2 .5 3.5 2.6 3.5 5.8"],
+  office: ["M4 21V5l8-2v18", "M12 9h8v12", "M3 21h18", "M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"],
+  team: ["M12 3l9 5-9 5-9-5 9-5z", "M3 12.5l9 5 9-5", "M3 17l9 5 9-5"],
+  chat: ["M4 5h16v11H9l-5 4V5z", "M8 9.5h8M8 12.5h5"],
+  assign: ["M9 11a3.2 3.2 0 100-6.4A3.2 3.2 0 009 11z", "M3 20c0-3.3 2.7-6 6-6 1.4 0 2.7.5 3.7 1.2", "M15 18l2 2 4-4"],
+  handoff: ["M4 12h13", "M13 7l5 5-5 5", "M20 4v16"],
+};
 
 const ROLE_ICONS = {
   dev: ["M8 8l-4 4 4 4", "M16 8l4 4-4 4", "M13.5 6l-3 12"],
@@ -264,36 +267,68 @@ const ROLE_ICONS = {
   sec: ["M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z", "M9 12l2 2 4-4"],
 };
 
-// Requirements → hiring → (optional) Phnom Penh office → a team covering dev, ops and security.
-const TeamFlow = ({ f }) => (
-  <div className="reveal mt-4 overflow-hidden rounded-3xl border border-line bg-panel p-7 md:p-10">
-    <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-      <div>
-        <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-nest-300">{f.label}</p>
-        <h3 className="mt-3 font-display text-2xl font-bold md:text-3xl">{f.title}</h3>
-      </div>
-      <p className="text-sm leading-relaxed text-white/55">{f.intro}</p>
-    </div>
+const PERSON = ["M12 11a3 3 0 100-6 3 3 0 000 6z", "M6.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"];
+const PIN = ["M12 21s-6-5.3-6-10a6 6 0 0112 0c0 4.7-6 10-6 10z", "M12 13a2 2 0 100-4 2 2 0 000 4z"];
 
-    <ol className="relative mt-12 grid gap-8 md:grid-cols-4 md:gap-5">
-      <div className="flow-track pointer-events-none absolute bottom-7 left-7 top-7 w-px bg-gradient-to-b from-nest-500/70 to-cyan-400/70 md:bottom-auto md:left-[12.5%] md:right-[12.5%] md:h-px md:w-auto md:bg-gradient-to-r">
-        <span className="flow-dot" />
+// Two ways to engage: build a dedicated team (requirements → hiring → optional Phnom Penh
+// office → team), or borrow our existing team for temporary dev/ops support.
+const TeamFlow = ({ f }) => {
+  const [active, setActive] = useState(0);
+  const pattern = f.patterns[active];
+  return (
+    <div className="reveal mt-4 overflow-hidden rounded-3xl border border-line bg-panel p-7 md:p-10">
+      <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div>
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-nest-300">{f.label}</p>
+          <h3 className="mt-3 font-display text-2xl font-bold md:text-3xl">{f.title}</h3>
+        </div>
+        <p className="text-sm leading-relaxed text-white/55">{f.intro}</p>
       </div>
 
-      {f.steps.map((s, i) => {
-        const last = i === f.steps.length - 1;
-        return (
-          <li key={s.en} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
+      <div role="tablist" className="mt-8 grid gap-3 md:grid-cols-2">
+        {f.patterns.map((p, i) => {
+          const on = i === active;
+          return (
+            <button
+              key={p.label}
+              type="button"
+              role="tab"
+              aria-selected={on}
+              onClick={() => setActive(i)}
+              className={`rounded-2xl border p-5 text-left transition ${
+                on
+                  ? "border-nest-400/70 bg-gradient-to-br from-nest-500/20 to-cyan-400/5 shadow-[0_0_40px_-15px_rgba(47,107,255,0.8)]"
+                  : "border-line bg-ink/40 hover:border-white/25"
+              }`}
+            >
+              <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-cyan-400">
+                <span className={`h-2 w-2 rounded-full ${on ? "bg-cyan-400" : "bg-white/20"}`} />
+                {p.label}
+              </span>
+              <span className={`mt-2 block text-lg font-bold ${on ? "text-white" : "text-white/70"}`}>{p.title}</span>
+              <span className="mt-1.5 block text-xs leading-relaxed text-white/55">{p.summary}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <ol key={active} role="tabpanel" className="relative mt-12 grid gap-8 md:grid-cols-4 md:gap-5">
+        <div className="flow-track pointer-events-none absolute bottom-7 left-7 top-7 w-px bg-gradient-to-b from-nest-500/70 to-cyan-400/70 md:bottom-auto md:left-[12.5%] md:right-[12.5%] md:h-px md:w-auto md:bg-gradient-to-r">
+          <span className="flow-dot" />
+        </div>
+
+        {pattern.steps.map((s, i) => (
+          <li key={s.en} className="flow-step relative flex gap-5 md:flex-col md:items-center md:text-center" style={{ animationDelay: `${i * 90}ms` }}>
             <span
               className={`relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full ring-8 ring-panel ${
-                last
+                s.highlight
                   ? "bg-gradient-to-br from-nest-500 to-cyan-400 text-white shadow-[0_0_30px_rgba(47,107,255,0.6)]"
                   : s.optional
                     ? "border border-dashed border-cyan-400/70 bg-ink text-cyan-400"
                     : "border border-nest-400/50 bg-ink text-nest-300"
               }`}
             >
-              <Icon d={FLOW_ICONS[i]} />
+              <Icon d={FLOW_ICONS[s.icon]} />
             </span>
             <div>
               <p className="font-mono text-[10px] uppercase tracking-widest text-white/35">
@@ -315,27 +350,27 @@ const TeamFlow = ({ f }) => (
                   ))}
                 </ul>
               )}
-              {i === 1 && (
+              {s.people && (
                 <ul className="mt-4 flex gap-1.5 md:justify-center" aria-hidden="true">
-                  {[1, 0, 1, 1, 0, 1].map((picked, k) => (
+                  {s.people.map((picked, k) => (
                     <li
                       key={k}
                       className={`grid h-7 w-7 place-items-center rounded-full ${
                         picked ? "bg-nest-500/25 text-cyan-400 ring-1 ring-cyan-400/60" : "bg-white/[0.04] text-white/20"
                       }`}
                     >
-                      <Icon d={["M12 11a3 3 0 100-6 3 3 0 000 6z", "M6.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"]} className="h-4 w-4" />
+                      <Icon d={PERSON} className="h-4 w-4" />
                     </li>
                   ))}
                 </ul>
               )}
-              {s.optional && (
+              {s.pin && (
                 <p className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-line bg-ink px-3 py-1 font-mono text-[11px] text-white/70">
-                  <Icon d={["M12 21s-6-5.3-6-10a6 6 0 0112 0c0 4.7-6 10-6 10z", "M12 13a2 2 0 100-4 2 2 0 000 4z"]} className="h-3.5 w-3.5 text-cyan-400" />
-                  Phnom Penh
+                  <Icon d={PIN} className="h-3.5 w-3.5 text-cyan-400" />
+                  {s.pin}
                 </p>
               )}
-              {last && (
+              {s.roles && (
                 <ul className="mt-4 flex flex-wrap gap-2 md:justify-center">
                   {f.roles.map(([key, en, label]) => (
                     <li
@@ -351,11 +386,11 @@ const TeamFlow = ({ f }) => (
               )}
             </div>
           </li>
-        );
-      })}
-    </ol>
-  </div>
-);
+        ))}
+      </ol>
+    </div>
+  );
+};
 
 const AiTeam = () => {
   const { t } = useLang();

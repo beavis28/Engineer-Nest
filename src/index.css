@@ -121,6 +121,17 @@ body {
   }
 }
 
+/* steps fade in when switching engagement patterns */
+.flow-step {
+  animation: flow-step-in 0.45s ease-out both;
+}
+@keyframes flow-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
 /* card with glow that follows the cursor (--x / --y set from JS) */
 .glow-card {
   position: relative;
@@ -149,7 +160,8 @@ body {
   .ticker,
   .float,
   .pulse-dot,
-  .flow-dot {
+  .flow-dot,
+  .flow-step {
     animation: none;
   }
   html {
